@@ -3,174 +3,262 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fabián Alberto Miliani - Desarrollador Senior Frontend & IA Aplicada</title>
-  <meta name="description" content="Fabián Alberto Miliani: desarrollador senior con más de 12 años de experiencia en Angular y TypeScript, especializado en agentes de IA, LLM, RAG y MCP.">
+  <title>Fabián Alberto Miliani | Desarrollador Senior Frontend & IA Aplicada</title>
+  <meta name="description" content="Portfolio profesional de Fabián Alberto Miliani, desarrollador senior frontend e IA aplicada especializado en Angular, TypeScript, agentes de IA, RAG y MCP.">
+  <meta name="theme-color" content="#4f46e5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .gradient-bg { background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%); }
-    .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(79,70,229,.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(99,102,241,.08), transparent 28%),
+        #f8fafc;
+      color: #0f172a;
+    }
+    .gradient-bg { background: linear-gradient(90deg, #4f46e5 0%, #6366f1 100%); }
+    .glass {
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.45);
+    }
+    .card {
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      border: 1px solid #e5e7eb;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 35px -18px rgba(15, 23, 42, .25);
+      border-color: #c7d2fe;
+    }
     .timeline-item { position: relative; padding-left: 2rem; margin-bottom: 2rem; }
-    .timeline-item:before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 2px; background-color: #e5e7eb; }
-    .timeline-item:after { content: ''; position: absolute; left: -0.4rem; top: 0.5rem; height: 1rem; width: 1rem; border-radius: 50%; background-color: #3b82f6; }
+    .timeline-item:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: linear-gradient(to bottom, #c7d2fe, #6366f1);
+    }
+    .timeline-item:after {
+      content: '';
+      position: absolute;
+      left: -0.4rem;
+      top: 0.55rem;
+      height: 1rem;
+      width: 1rem;
+      border-radius: 9999px;
+      background-color: #4f46e5;
+      box-shadow: 0 0 0 6px rgba(79,70,229,.12);
+    }
   </style>
 </head>
-<body class="bg-gray-50 font-sans">
-  <nav class="gradient-bg text-white shadow-lg">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold">Fabián Miliani</a>
-      <div class="hidden md:flex space-x-8">
-        <a href="#about" class="hover:text-gray-200">Sobre mí</a>
-        <a href="#skills" class="hover:text-gray-200">Habilidades</a>
-        <a href="#projects" class="hover:text-gray-200">Proyectos IA</a>
-        <a href="#experience" class="hover:text-gray-200">Experiencia</a>
-        <a href="#agent" class="hover:text-gray-200">Mi Agente IA</a>
-        <a href="#contact" class="hover:text-gray-200">Contacto</a>
+<body>
+  <nav class="sticky top-0 z-50 glass shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#" class="font-extrabold text-lg md:text-xl text-slate-900 tracking-tight">Fabián Miliani</a>
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-700">
+        <a href="#about" class="hover:text-indigo-600 transition">Sobre mí</a>
+        <a href="#skills" class="hover:text-indigo-600 transition">Habilidades</a>
+        <a href="#projects" class="hover:text-indigo-600 transition">Proyectos</a>
+        <a href="#experience" class="hover:text-indigo-600 transition">Experiencia</a>
+        <a href="#agent" class="hover:text-indigo-600 transition">Agente IA</a>
+        <a href="#contact" class="hover:text-indigo-600 transition">Contacto</a>
       </div>
-      <button class="md:hidden focus:outline-none">
+      <button class="md:hidden text-slate-900" aria-label="Abrir menú">
         <i class="fas fa-bars text-xl"></i>
       </button>
     </div>
   </nav>
 
-  <header class="bg-white py-16">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-      <div class="md:w-1/2 mb-8 md:mb-0">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Hola, soy <span class="text-blue-600">Fabián Alberto Miliani</span></h1>
-        <p class="text-xl text-gray-600 mb-6">Desarrollador Senior Frontend & IA Aplicada</p>
-        <p class="text-gray-600 mb-4">Más de 12 años construyendo aplicaciones web y plataformas empresariales. Hoy diseño y construyo agentes de IA de extremo a extremo y los llevo a interfaces reales para usuarios y negocio.</p>
-        <div class="flex flex-wrap gap-2 mb-8">
-          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">Agentes de IA</span>
-          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">LLM</span>
-          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">RAG</span>
-          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">MCP</span>
-          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">Angular</span>
-          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">TypeScript</span>
-          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">Python</span>
+  <header class="py-20 md:py-28">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-sm font-semibold mb-5">Portfolio profesional</span>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900 tracking-tight">
+          Desarrollador Senior Frontend <span class="text-indigo-600">& IA Aplicada</span>
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl">
+          Más de 12 años construyendo productos digitales. Combino experiencia en frontend, arquitectura y UX con IA generativa, agentes, RAG y automatización.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <span class="px-3 py-2 rounded-full bg-white shadow-sm border text-slate-700 text-sm">Angular</span>
+          <span class="px-3 py-2 rounded-full bg-white shadow-sm border text-slate-700 text-sm">TypeScript</span>
+          <span class="px-3 py-2 rounded-full bg-white shadow-sm border text-slate-700 text-sm">Python</span>
+          <span class="px-3 py-2 rounded-full bg-white shadow-sm border text-slate-700 text-sm">LLM</span>
+          <span class="px-3 py-2 rounded-full bg-white shadow-sm border text-slate-700 text-sm">RAG</span>
+          <span class="px-3 py-2 rounded-full bg-white shadow-sm border text-slate-700 text-sm">MCP</span>
         </div>
-        <div class="flex space-x-4">
-          <a href="#contact" class="gradient-bg text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition">Contáctame</a>
-          <a href="#projects" class="bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition">Ver proyectos de IA</a>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="#contact" class="gradient-bg text-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition font-semibold">Contáctame</a>
+          <a href="#projects" class="bg-white text-indigo-600 border border-indigo-200 px-6 py-3 rounded-xl hover:bg-indigo-50 transition font-semibold">Ver proyectos</a>
         </div>
       </div>
-      <div class="md:w-1/2 flex justify-center items-center">
-        <div class="relative w-64 h-64 overflow-hidden rounded-full shadow-xl">
-          <img src="./bombillo.jpeg" alt="Fabián Miliani" class="absolute inset-0 w-full h-full object-cover object-center">
+      <div class="flex justify-center md:justify-end">
+        <div class="relative">
+          <div class="absolute inset-0 bg-indigo-500/10 rounded-full blur-3xl"></div>
+          <div class="relative w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full shadow-2xl ring-8 ring-white">
+            <img src="./bombillo.jpeg" alt="Fabián Miliani" class="absolute inset-0 w-full h-full object-cover object-center">
+          </div>
         </div>
       </div>
     </div>
   </header>
 
-  <section id="about" class="py-16 bg-gray-50">
+  <section id="about" class="py-20">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Sobre Mí</h2>
-      <div class="bg-white rounded-xl shadow-md p-8">
-        <p class="text-gray-600 mb-6">Soy desarrollador senior con más de 12 años construyendo aplicaciones web y plataformas de gestión empresarial, especializado en Angular y TypeScript. Ahora me centro en el desarrollo de soluciones con IA aplicada, integrando tecnología y producto para resolver necesidades reales.</p>
-        <p class="text-gray-600 mb-6">Diseño y construyo agentes de IA de extremo a extremo: tool calling, RAG con bases de datos vectoriales, memoria persistente, servidores MCP, voz y visión, con modelos locales y servicios en la nube.</p>
-        <p class="text-gray-600 mb-6">Mi perfil combina experiencia sólida en producto y frontend para llevar los agentes a interfaces reales que usan las personas.</p>
-        <div class="flex flex-wrap gap-4 mt-8">
-          <div class="bg-blue-50 px-4 py-2 rounded-lg"><i class="fas fa-briefcase text-blue-600 mr-2"></i><span class="text-gray-700">12+ años de experiencia</span></div>
-          <div class="bg-blue-50 px-4 py-2 rounded-lg"><i class="fas fa-robot text-blue-600 mr-2"></i><span class="text-gray-700">Certificado IBM en Agentes de IA</span></div>
-          <div class="bg-blue-50 px-4 py-2 rounded-lg"><i class="fas fa-graduation-cap text-blue-600 mr-2"></i><span class="text-gray-700">Licenciado en Publicidad</span></div>
-          <div class="bg-blue-50 px-4 py-2 rounded-lg"><i class="fas fa-globe text-blue-600 mr-2"></i><span class="text-gray-700">Español e Italiano</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Mis Habilidades</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600"><div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-robot"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">IA Generativa y Agentes</h3><p class="text-gray-600">LangChain, LangGraph, CrewAI, AG2, IBM BeeAI, sistemas multi-agente, Agentic RAG, tool calling, MCP, prompt engineering.</p></div>
-        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600"><div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-brain"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">LLM y RAG</h3><p class="text-gray-600">Ollama, Groq API, NVIDIA NIM, Hugging Face, Gradio, embeddings, PostgreSQL + pgvector, búsqueda semántica.</p></div>
-        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600"><div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-microphone"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">IA Multimodal</h3><p class="text-gray-600">Visión, voz con Whisper y Piper, generación de imágenes con FLUX.1.</p></div>
-        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600"><div class="text-blue-600 text-4xl mb-4"><i class="fab fa-angular"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">Frontend</h3><p class="text-gray-600">Angular, TypeScript, JavaScript, RxJS, Redux, HTML5, CSS3, SCSS, Jest, Ionic.</p></div>
-        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600"><div class="text-blue-600 text-4xl mb-4"><i class="fas fa-server"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">Backend</h3><p class="text-gray-600">Python, Node.js, NestJS, PHP, APIs RESTful, Swagger, MySQL, PostgreSQL.</p></div>
-        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600"><div class="text-blue-600 text-4xl mb-4"><i class="fas fa-tools"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">Herramientas y Metodologías</h3><p class="text-gray-600">Docker, Git, GitLab, VS Code, Scrum, desarrollo ágil, liderazgo de equipos, SEO.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="py-16 bg-indigo-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Proyectos de IA</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="card bg-white rounded-xl shadow-md p-6 md:col-span-3"><div class="flex items-center mb-4"><div class="text-indigo-600 text-3xl mr-4"><i class="fas fa-headset"></i></div><div><h3 class="text-xl font-bold text-gray-800">Citrox</h3><p class="text-gray-500">Asistente de IA personal con agentes, RAG y voz · proyecto propio</p></div></div><ul class="text-gray-600 space-y-2 list-disc pl-5"><li>Agente con tool calling que ejecuta acciones reales.</li><li>RAG sobre documentación y código de proyectos propios.</li><li>Memoria persistente de conversaciones y conocimiento.</li><li>Servidores MCP propios para acceso a archivos y correo IMAP.</li><li>Interfaz por voz con Whisper y Piper.</li><li>Visión y generación de imágenes con modelos multimodales.</li></ul></div>
-        <div class="card bg-white rounded-xl shadow-md p-6 md:col-span-2"><div class="flex items-center mb-4"><div class="text-indigo-600 text-3xl mr-4"><i class="fas fa-file-alt"></i></div><div><h3 class="text-xl font-bold text-gray-800">Actualizador de CV con IA local</h3><p class="text-gray-500">Proyecto propio · Python + Ollama</p></div></div><p class="text-gray-600">Pipeline que extrae datos de certificados, reescribe el CV optimizado para ATS y lo exporta en diferentes formatos.</p></div>
-        <div class="card bg-white rounded-xl shadow-md p-6"><div class="flex items-center mb-4"><div class="text-indigo-600 text-3xl mr-4"><i class="fas fa-comments"></i></div><h3 class="text-xl font-bold text-gray-800">Agente de perfil profesional</h3></div><p class="text-gray-600 mb-4">Asistente conversacional con Gradio que responde preguntas sobre mi trayectoria, publicado en Hugging Face Spaces.</p><a href="#agent" class="text-blue-600 hover:underline">Probarlo <i class="fas fa-arrow-right ml-1"></i></a></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Experiencia Profesional</h2>
-      <div class="bg-white rounded-xl shadow-md p-8">
-        <div class="timeline-item"><h3 class="text-xl font-bold text-gray-800">Desarrollador Senior Frontend</h3><p class="text-blue-600 font-semibold">GFT Technologies</p><p class="text-gray-500 mb-2">mayo de 2024 - Presente</p><p class="text-gray-600">Madrid, España</p></div>
-        <div class="timeline-item"><h3 class="text-xl font-bold text-gray-800">Desarrollador de aplicación de software</h3><p class="text-blue-600 font-semibold">Plexus Tech</p><p class="text-gray-500 mb-2">mayo de 2023 - junio de 2024</p><p class="text-gray-600">Madrid, España</p></div>
-        <div class="timeline-item"><h3 class="text-xl font-bold text-gray-800">Team Lead Manager</h3><p class="text-blue-600 font-semibold">Searchit</p><p class="text-gray-500 mb-2">abril de 2022 - agosto de 2023</p></div>
-        <div class="timeline-item"><h3 class="text-xl font-bold text-gray-800">Desarrollador de front-end</h3><p class="text-blue-600 font-semibold">Paradigma Digital</p><p class="text-gray-500 mb-2">mayo de 2018 - marzo de 2022</p><p class="text-gray-600">Aravaca</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="agent" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="bg-white rounded-xl shadow-md p-6 text-center">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">Mi Agente IA</h2>
-        <p class="text-gray-600 mb-6">Interactúa con mi asistente virtual desarrollado con Gradio y alojado en Hugging Face Spaces.</p>
-        <a href="https://huggingface.co/spaces/fabmil22/my_perfil" target="_blank" rel="noopener noreferrer" class="gradient-bg text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition inline-block"><i class="fas fa-robot mr-2"></i>Interactuar con mi Agente IA</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Contacto</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-gray-50 rounded-xl shadow-md p-8">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">Información de contacto</h3>
-          <div class="space-y-4">
-            <div class="flex items-start"><div class="text-blue-600 text-xl mr-4"><i class="fas fa-envelope"></i></div><div><h4 class="font-bold text-gray-700">Email</h4><p class="text-gray-600">fabianfabian22@hotmail.com</p></div></div>
-            <div class="flex items-start"><div class="text-blue-600 text-xl mr-4"><i class="fas fa-map-marker-alt"></i></div><div><h4 class="font-bold text-gray-700">Ubicación</h4><p class="text-gray-600">Gines, Andalucía, España</p></div></div>
-            <div class="flex items-start"><div class="text-blue-600 text-xl mr-4"><i class="fas fa-globe"></i></div><div><h4 class="font-bold text-gray-700">Sitio Web</h4><p class="text-gray-600"><a href="https://fbmiliani.com" class="text-blue-600 hover:underline">fbmiliani.com</a></p></div></div>
+      <div class="max-w-5xl mx-auto glass rounded-3xl shadow-lg p-8 md:p-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-6">Sobre mí</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="md:col-span-2 space-y-5 text-slate-600 leading-relaxed text-lg">
+            <p>Soy desarrollador senior con más de 12 años construyendo aplicaciones web y plataformas empresariales, especializado en Angular y TypeScript.</p>
+            <p>Actualmente me enfoco en soluciones con IA aplicada: agentes, tool calling, RAG, memoria persistente, voz, visión y servidores MCP.</p>
+            <p>Me gusta unir tecnología, producto y diseño para crear experiencias útiles, escalables y orientadas a negocio.</p>
           </div>
-          <div class="mt-8"><h4 class="font-bold text-gray-700 mb-4">Redes sociales</h4><div class="flex space-x-4"><a href="https://www.linkedin.com/in/fabian-alberto-miliani-70440a3a" class="text-blue-600 hover:text-blue-800 text-2xl" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a><a href="https://github.com/fabmil22" class="text-blue-600 hover:text-blue-800 text-2xl" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a></div></div>
+          <div class="grid gap-4 content-start">
+            <div class="bg-white rounded-2xl p-4 shadow-sm border"><div class="font-semibold text-slate-900">12+ años</div><div class="text-sm text-slate-500">de experiencia</div></div>
+            <div class="bg-white rounded-2xl p-4 shadow-sm border"><div class="font-semibold text-slate-900">IBM AI</div><div class="text-sm text-slate-500">certificación en agentes</div></div>
+            <div class="bg-white rounded-2xl p-4 shadow-sm border"><div class="font-semibold text-slate-900">ES / IT</div><div class="text-sm text-slate-500">idiomas</div></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="gradient-bg text-white py-8">
+  <section id="skills" class="py-20 bg-white/70">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <h3 class="text-xl font-bold">Fabián Alberto Miliani</h3>
-          <p class="text-gray-200">Desarrollador Senior Frontend & IA Aplicada</p>
-        </div>
-        <div><p class="text-gray-200">&copy; 2026 Fabián Alberto Miliani. Todos los derechos reservados.</p></div>
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold text-slate-900">Habilidades</h2>
+        <p class="mt-4 text-slate-600">Un stack pensado para construir producto, automatización e interfaces profesionales con IA.</p>
       </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div class="card bg-white rounded-2xl p-6 shadow-sm"><div class="text-indigo-600 text-3xl mb-4"><i class="fas fa-robot"></i></div><h3 class="text-xl font-bold mb-2">IA Generativa y Agentes</h3><p class="text-slate-600">LangChain, LangGraph, CrewAI, AG2, BeeAI, Agentic RAG, tool calling y MCP.</p></div>
+        <div class="card bg-white rounded-2xl p-6 shadow-sm"><div class="text-indigo-600 text-3xl mb-4"><i class="fas fa-brain"></i></div><h3 class="text-xl font-bold mb-2">LLM y RAG</h3><p class="text-slate-600">Ollama, Groq, NVIDIA NIM, Hugging Face, embeddings, pgvector y búsqueda semántica.</p></div>
+        <div class="card bg-white rounded-2xl p-6 shadow-sm"><div class="text-indigo-600 text-3xl mb-4"><i class="fas fa-microphone"></i></div><h3 class="text-xl font-bold mb-2">Multimodal</h3><p class="text-slate-600">Visión, voz con Whisper y Piper, automatización y generación de imágenes.</p></div>
+        <div class="card bg-white rounded-2xl p-6 shadow-sm"><div class="text-blue-600 text-3xl mb-4"><i class="fab fa-angular"></i></div><h3 class="text-xl font-bold mb-2">Frontend</h3><p class="text-slate-600">Angular, TypeScript, JavaScript, RxJS, Redux, HTML5, CSS3, SCSS, Jest, Ionic.</p></div>
+        <div class="card bg-white rounded-2xl p-6 shadow-sm"><div class="text-blue-600 text-3xl mb-4"><i class="fas fa-server"></i></div><h3 class="text-xl font-bold mb-2">Backend</h3><p class="text-slate-600">Python, Node.js, NestJS, PHP, REST APIs, Swagger, MySQL y PostgreSQL.</p></div>
+        <div class="card bg-white rounded-2xl p-6 shadow-sm"><div class="text-blue-600 text-3xl mb-4"><i class="fas fa-tools"></i></div><h3 class="text-xl font-bold mb-2">Herramientas</h3><p class="text-slate-600">Docker, Git, GitLab, VS Code, Scrum, SEO y liderazgo técnico.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold text-slate-900">Proyectos destacados</h2>
+        <p class="mt-4 text-slate-600">Iniciativas propias centradas en IA aplicada, productividad y automatización.</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="card bg-white rounded-2xl p-6 shadow-sm lg:col-span-3">
+          <div class="flex items-start gap-4">
+            <div class="text-indigo-600 text-3xl"><i class="fas fa-headset"></i></div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900">Citrox</h3>
+              <p class="text-slate-500">Asistente de IA personal con agentes, RAG y voz</p>
+            </div>
+          </div>
+          <ul class="mt-5 grid md:grid-cols-2 gap-3 text-slate-600 list-disc pl-5">
+            <li>Tool calling para ejecutar acciones reales.</li>
+            <li>RAG sobre documentación y código.</li>
+            <li>Memoria persistente y conocimiento contextual.</li>
+            <li>Servidores MCP para archivos y correo.</li>
+          </ul>
+        </div>
+        <div class="card bg-white rounded-2xl p-6 shadow-sm lg:col-span-2">
+          <h3 class="text-xl font-bold text-slate-900">Actualizador de CV con IA local</h3>
+          <p class="mt-3 text-slate-600">Pipeline con visión, reescritura orientada a ATS y exportación de contenido profesional.</p>
+        </div>
+        <div class="card bg-white rounded-2xl p-6 shadow-sm">
+          <h3 class="text-xl font-bold text-slate-900">Agente de perfil profesional</h3>
+          <p class="mt-3 text-slate-600">Asistente conversacional con Gradio para responder sobre mi trayectoria.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="py-20 bg-white/70">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold text-slate-900">Experiencia profesional</h2>
+      </div>
+      <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-sm p-8 md:p-10 border">
+        <div class="timeline-item"><h3 class="text-xl font-bold text-slate-900">Desarrollador Senior Frontend</h3><p class="text-indigo-600 font-semibold">GFT Technologies</p><p class="text-slate-500">mayo 2024 - Presente</p></div>
+        <div class="timeline-item"><h3 class="text-xl font-bold text-slate-900">Desarrollador de aplicación de software</h3><p class="text-indigo-600 font-semibold">Plexus Tech</p><p class="text-slate-500">mayo 2023 - junio 2024</p></div>
+        <div class="timeline-item"><h3 class="text-xl font-bold text-slate-900">Team Lead Manager</h3><p class="text-indigo-600 font-semibold">Searchit</p><p class="text-slate-500">abril 2022 - agosto 2023</p></div>
+        <div class="timeline-item mb-0"><h3 class="text-xl font-bold text-slate-900">Desarrollador Frontend</h3><p class="text-indigo-600 font-semibold">Paradigma Digital</p><p class="text-slate-500">mayo 2018 - marzo 2022</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agent" class="py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto gradient-bg rounded-3xl p-8 md:p-12 text-white shadow-xl">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h2 class="text-3xl font-bold">Mi Agente IA</h2>
+            <p class="mt-3 text-indigo-100">Interactúa con mi asistente virtual en Hugging Face Spaces.</p>
+          </div>
+          <a href="https://huggingface.co/spaces/fabmil22/my_perfil" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white text-indigo-600 font-semibold shadow-md hover:shadow-lg transition"><i class="fas fa-robot mr-2"></i>Probar agente</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 bg-white/70">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl font-bold text-slate-900">Contacto</h2>
+        <p class="mt-4 text-slate-600">Si quieres hablar sobre producto, frontend o IA aplicada, escríbeme.</p>
+      </div>
+      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl shadow-sm p-6 border">
+          <h3 class="text-xl font-bold text-slate-900 mb-4">Información</h3>
+          <div class="space-y-4 text-slate-600">
+            <p><i class="fas fa-envelope text-indigo-600 mr-3"></i>fabianfabian22@hotmail.com</p>
+            <p><i class="fas fa-map-marker-alt text-indigo-600 mr-3"></i>Gines, Andalucía, España</p>
+            <p><i class="fas fa-globe text-indigo-600 mr-3"></i><a href="https://fbmiliani.com" class="text-indigo-600 hover:underline">fbmiliani.com</a></p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm p-6 border">
+          <h3 class="text-xl font-bold text-slate-900 mb-4">Redes</h3>
+          <div class="flex gap-4 text-3xl">
+            <a href="https://www.linkedin.com/in/fabian-alberto-miliani-70440a3a" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-700"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/fabmil22" target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:text-slate-900"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8">
+    <div class="container mx-auto px-4 text-center text-slate-500 text-sm">
+      © 2026 Fabián Alberto Miliani · Desarrollador Senior Frontend & IA Aplicada
     </div>
   </footer>
 
   <script>
     const menuBtn = document.querySelector('button');
-    const nav = document.querySelector('.md\\:flex');
-    if (menuBtn && nav) {
-      menuBtn.addEventListener('click', function () {
-        nav.classList.toggle('hidden');
-        nav.classList.toggle('flex');
-        nav.classList.toggle('flex-col');
-        nav.classList.toggle('absolute');
-        nav.classList.toggle('top-16');
-        nav.classList.toggle('right-0');
-        nav.classList.toggle('bg-blue-700');
-        nav.classList.toggle('p-4');
-        nav.classList.toggle('rounded-lg');
-        nav.classList.toggle('shadow-lg');
-        nav.classList.toggle('z-50');
+    const nav = document.querySelector('nav .hidden');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const navLinks = document.querySelector('nav div.hidden');
+        if (!navLinks) return;
+        navLinks.classList.toggle('hidden');
+        navLinks.classList.toggle('flex');
+        navLinks.classList.toggle('flex-col');
+        navLinks.classList.toggle('absolute');
+        navLinks.classList.toggle('top-16');
+        navLinks.classList.toggle('right-4');
+        navLinks.classList.toggle('bg-white');
+        navLinks.classList.toggle('shadow-lg');
+        navLinks.classList.toggle('p-4');
+        navLinks.classList.toggle('rounded-xl');
       });
     }
   </script>
