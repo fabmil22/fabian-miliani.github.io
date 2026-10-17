@@ -1,116 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fabián Miliani | Generador de chistes</title>
-  <meta name="description" content="Generador de chistes aleatorios usando una API externa." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fabián Alberto Miliani - Desarrollador Senior Frontend & IA Aplicada</title>
+  <meta name="description" content="Fabián Alberto Miliani: desarrollador senior con más de 12 años de experiencia en Angular y TypeScript, especializado en agentes de IA, LLM, RAG y MCP.">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: #111827;
-      padding: 24px;
-    }
-    .card {
-      width: min(720px, 100%);
-      background: #fff;
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 20px 50px rgba(0,0,0,.2);
-      text-align: center;
-    }
-    h1 { margin: 0 0 8px; font-size: clamp(2rem, 4vw, 3rem); }
-    p.lead { margin: 0 0 24px; color: #4b5563; }
-    .joke {
-      min-height: 140px;
-      display: grid;
-      align-content: center;
-      gap: 12px;
-      padding: 24px;
-      margin: 24px 0;
-      border-radius: 16px;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      font-size: 1.15rem;
-      line-height: 1.6;
-    }
-    .setup { font-weight: 600; }
-    .delivery { color: #4f46e5; font-weight: 700; }
-    button {
-      border: 0;
-      background: #4f46e5;
-      color: white;
-      padding: 14px 22px;
-      border-radius: 12px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    button:disabled { opacity: .65; cursor: wait; }
-    .error { color: #dc2626; }
-    small { display: block; margin-top: 16px; color: #6b7280; }
-    a { color: #4f46e5; }
+    .gradient-bg { background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%); }
+    .card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+    .timeline-item { position: relative; padding-left: 2rem; margin-bottom: 2rem; }
+    .timeline-item:before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 2px; background-color: #e5e7eb; }
+    .timeline-item:after { content: ''; position: absolute; left: -0.4rem; top: 0.5rem; height: 1rem; width: 1rem; border-radius: 50%; background-color: #3b82f6; }
   </style>
 </head>
-<body>
-  <main class="card">
-    <h1>😂 Generador de chistes</h1>
-    <p class="lead">Pulsa el botón para obtener un chiste aleatorio desde una API externa.</p>
-
-    <div id="joke" class="joke" aria-live="polite">
-      <p>Haz clic en <strong>Nuevo chiste</strong> para empezar.</p>
+<body class="bg-gray-50 font-sans">
+  <nav class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold">Fabián Miliani</a>
+      <div class="hidden md:flex space-x-8">
+        <a href="#about" class="hover:text-gray-200">Sobre mí</a>
+        <a href="#skills" class="hover:text-gray-200">Habilidades</a>
+        <a href="#projects" class="hover:text-gray-200">Proyectos IA</a>
+        <a href="#experience" class="hover:text-gray-200">Experiencia</a>
+        <a href="#agent" class="hover:text-gray-200">Mi Agente IA</a>
+        <a href="#contact" class="hover:text-gray-200">Contacto</a>
+      </div>
+      <button class="md:hidden focus:outline-none">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
     </div>
+  </nav>
 
-    <button id="btn">Nuevo chiste</button>
+  <header class="bg-white py-16">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-8 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Hola, soy <span class="text-blue-600">Fabián Alberto Miliani</span></h1>
+        <p class="text-xl text-gray-600 mb-6">Desarrollador Senior Frontend & IA Aplicada</p>
+        <p class="text-gray-600 mb-4">Más de 12 años construyendo aplicaciones web y plataformas empresariales. Hoy diseño y construyo agentes de IA de extremo a extremo y los llevo a interfaces reales para usuarios y negocio.</p>
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">Agentes de IA</span>
+          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">LLM</span>
+          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">RAG</span>
+          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">MCP</span>
+          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">Angular</span>
+          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">TypeScript</span>
+          <span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">Python</span>
+        </div>
+        <div class="flex space-x-4">
+          <a href="#contact" class="gradient-bg text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition">Contáctame</a>
+          <a href="#projects" class="bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition">Ver proyectos de IA</a>
+        </div>
+      </div>
+      <div class="md:w-1/2 flex justify-center items-center">
+        <div class="relative w-64 h-64 overflow-hidden rounded-full shadow-xl">
+          <img src="./bombillo.jpeg" alt="Fabián Miliani" class="absolute inset-0 w-full h-full object-cover object-center">
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <small>Usa <a href="https://v2.jokeapi.dev/" target="_blank" rel="noopener noreferrer">JokeAPI</a>.</small>
-  </main>
+  <section id="about" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Sobre Mí</h2>
+      <div class="bg-white rounded-xl shadow-md p-8">
+        <p class="text-gray-600 mb-6">Soy desarrollador senior con más de 12 años construyendo aplicaciones web y plataformas de gestión empresarial, especializado en Angular y TypeScript. Ahora me centro en el desarrollo de soluciones con IA aplicada, integrando tecnología y producto para resolver necesidades reales.</p>
+        <p class="text-gray-600 mb-6">Diseño y construyo agentes de IA de extremo a extremo: tool calling, RAG con bases de datos vectoriales, memoria persistente, servidores MCP, voz y visión, con modelos locales y servicios en la nube.</p>
+        <p class="text-gray-600 mb-6">Mi perfil combina experiencia sólida en producto y frontend para llevar los agentes a interfaces reales que usan las personas.</p>
+        <div class="flex flex-wrap gap-4 mt-8">
+          <div class="bg-blue-50 px-4 py-2 rounded-lg"><i class="fas fa-briefcase text-blue-600 mr-2"></i><span class="text-gray-700">12+ años de experiencia</span></div>
+          <div class="bg-blue-50 px-4 py-2 rounded-lg"><i class="fas fa-robot text-blue-600 mr-2"></i><span class="text-gray-700">Certificado IBM en Agentes de IA</span></div>
+          <div class="bg-blue-50 px-4 py-2 rounded-lg"><i class="fas fa-graduation-cap text-blue-600 mr-2"></i><span class="text-gray-700">Licenciado en Publicidad</span></div>
+          <div class="bg-blue-50 px-4 py-2 rounded-lg"><i class="fas fa-globe text-blue-600 mr-2"></i><span class="text-gray-700">Español e Italiano</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Mis Habilidades</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600"><div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-robot"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">IA Generativa y Agentes</h3><p class="text-gray-600">LangChain, LangGraph, CrewAI, AG2, IBM BeeAI, sistemas multi-agente, Agentic RAG, tool calling, MCP, prompt engineering.</p></div>
+        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600"><div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-brain"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">LLM y RAG</h3><p class="text-gray-600">Ollama, Groq API, NVIDIA NIM, Hugging Face, Gradio, embeddings, PostgreSQL + pgvector, búsqueda semántica.</p></div>
+        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600"><div class="text-indigo-600 text-4xl mb-4"><i class="fas fa-microphone"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">IA Multimodal</h3><p class="text-gray-600">Visión, voz con Whisper y Piper, generación de imágenes con FLUX.1.</p></div>
+        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600"><div class="text-blue-600 text-4xl mb-4"><i class="fab fa-angular"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">Frontend</h3><p class="text-gray-600">Angular, TypeScript, JavaScript, RxJS, Redux, HTML5, CSS3, SCSS, Jest, Ionic.</p></div>
+        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600"><div class="text-blue-600 text-4xl mb-4"><i class="fas fa-server"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">Backend</h3><p class="text-gray-600">Python, Node.js, NestJS, PHP, APIs RESTful, Swagger, MySQL, PostgreSQL.</p></div>
+        <div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600"><div class="text-blue-600 text-4xl mb-4"><i class="fas fa-tools"></i></div><h3 class="text-xl font-bold text-gray-800 mb-2">Herramientas y Metodologías</h3><p class="text-gray-600">Docker, Git, GitLab, VS Code, Scrum, desarrollo ágil, liderazgo de equipos, SEO.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="py-16 bg-indigo-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Proyectos de IA</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card bg-white rounded-xl shadow-md p-6 md:col-span-3"><div class="flex items-center mb-4"><div class="text-indigo-600 text-3xl mr-4"><i class="fas fa-headset"></i></div><div><h3 class="text-xl font-bold text-gray-800">Citrox</h3><p class="text-gray-500">Asistente de IA personal con agentes, RAG y voz · proyecto propio</p></div></div><ul class="text-gray-600 space-y-2 list-disc pl-5"><li>Agente con tool calling que ejecuta acciones reales.</li><li>RAG sobre documentación y código de proyectos propios.</li><li>Memoria persistente de conversaciones y conocimiento.</li><li>Servidores MCP propios para acceso a archivos y correo IMAP.</li><li>Interfaz por voz con Whisper y Piper.</li><li>Visión y generación de imágenes con modelos multimodales.</li></ul></div>
+        <div class="card bg-white rounded-xl shadow-md p-6 md:col-span-2"><div class="flex items-center mb-4"><div class="text-indigo-600 text-3xl mr-4"><i class="fas fa-file-alt"></i></div><div><h3 class="text-xl font-bold text-gray-800">Actualizador de CV con IA local</h3><p class="text-gray-500">Proyecto propio · Python + Ollama</p></div></div><p class="text-gray-600">Pipeline que extrae datos de certificados, reescribe el CV optimizado para ATS y lo exporta en diferentes formatos.</p></div>
+        <div class="card bg-white rounded-xl shadow-md p-6"><div class="flex items-center mb-4"><div class="text-indigo-600 text-3xl mr-4"><i class="fas fa-comments"></i></div><h3 class="text-xl font-bold text-gray-800">Agente de perfil profesional</h3></div><p class="text-gray-600 mb-4">Asistente conversacional con Gradio que responde preguntas sobre mi trayectoria, publicado en Hugging Face Spaces.</p><a href="#agent" class="text-blue-600 hover:underline">Probarlo <i class="fas fa-arrow-right ml-1"></i></a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Experiencia Profesional</h2>
+      <div class="bg-white rounded-xl shadow-md p-8">
+        <div class="timeline-item"><h3 class="text-xl font-bold text-gray-800">Desarrollador Senior Frontend</h3><p class="text-blue-600 font-semibold">GFT Technologies</p><p class="text-gray-500 mb-2">mayo de 2024 - Presente</p><p class="text-gray-600">Madrid, España</p></div>
+        <div class="timeline-item"><h3 class="text-xl font-bold text-gray-800">Desarrollador de aplicación de software</h3><p class="text-blue-600 font-semibold">Plexus Tech</p><p class="text-gray-500 mb-2">mayo de 2023 - junio de 2024</p><p class="text-gray-600">Madrid, España</p></div>
+        <div class="timeline-item"><h3 class="text-xl font-bold text-gray-800">Team Lead Manager</h3><p class="text-blue-600 font-semibold">Searchit</p><p class="text-gray-500 mb-2">abril de 2022 - agosto de 2023</p></div>
+        <div class="timeline-item"><h3 class="text-xl font-bold text-gray-800">Desarrollador de front-end</h3><p class="text-blue-600 font-semibold">Paradigma Digital</p><p class="text-gray-500 mb-2">mayo de 2018 - marzo de 2022</p><p class="text-gray-600">Aravaca</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agent" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="bg-white rounded-xl shadow-md p-6 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Mi Agente IA</h2>
+        <p class="text-gray-600 mb-6">Interactúa con mi asistente virtual desarrollado con Gradio y alojado en Hugging Face Spaces.</p>
+        <a href="https://huggingface.co/spaces/fabmil22/my_perfil" target="_blank" rel="noopener noreferrer" class="gradient-bg text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition inline-block"><i class="fas fa-robot mr-2"></i>Interactuar con mi Agente IA</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Contacto</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-gray-50 rounded-xl shadow-md p-8">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">Información de contacto</h3>
+          <div class="space-y-4">
+            <div class="flex items-start"><div class="text-blue-600 text-xl mr-4"><i class="fas fa-envelope"></i></div><div><h4 class="font-bold text-gray-700">Email</h4><p class="text-gray-600">fabianfabian22@hotmail.com</p></div></div>
+            <div class="flex items-start"><div class="text-blue-600 text-xl mr-4"><i class="fas fa-map-marker-alt"></i></div><div><h4 class="font-bold text-gray-700">Ubicación</h4><p class="text-gray-600">Gines, Andalucía, España</p></div></div>
+            <div class="flex items-start"><div class="text-blue-600 text-xl mr-4"><i class="fas fa-globe"></i></div><div><h4 class="font-bold text-gray-700">Sitio Web</h4><p class="text-gray-600"><a href="https://fbmiliani.com" class="text-blue-600 hover:underline">fbmiliani.com</a></p></div></div>
+          </div>
+          <div class="mt-8"><h4 class="font-bold text-gray-700 mb-4">Redes sociales</h4><div class="flex space-x-4"><a href="https://www.linkedin.com/in/fabian-alberto-miliani-70440a3a" class="text-blue-600 hover:text-blue-800 text-2xl" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a><a href="https://github.com/fabmil22" class="text-blue-600 hover:text-blue-800 text-2xl" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="gradient-bg text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h3 class="text-xl font-bold">Fabián Alberto Miliani</h3>
+          <p class="text-gray-200">Desarrollador Senior Frontend & IA Aplicada</p>
+        </div>
+        <div><p class="text-gray-200">&copy; 2026 Fabián Alberto Miliani. Todos los derechos reservados.</p></div>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const API_URL = 'https://v2.jokeapi.dev/joke/Any?safe-mode';
-    const jokeEl = document.getElementById('joke');
-    const btn = document.getElementById('btn');
-
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
+    const menuBtn = document.querySelector('button');
+    const nav = document.querySelector('.md\\:flex');
+    if (menuBtn && nav) {
+      menuBtn.addEventListener('click', function () {
+        nav.classList.toggle('hidden');
+        nav.classList.toggle('flex');
+        nav.classList.toggle('flex-col');
+        nav.classList.toggle('absolute');
+        nav.classList.toggle('top-16');
+        nav.classList.toggle('right-0');
+        nav.classList.toggle('bg-blue-700');
+        nav.classList.toggle('p-4');
+        nav.classList.toggle('rounded-lg');
+        nav.classList.toggle('shadow-lg');
+        nav.classList.toggle('z-50');
+      });
     }
-
-    async function loadJoke() {
-      btn.disabled = true;
-      jokeEl.innerHTML = '<p>Cargando...</p>';
-
-      try {
-        const response = await fetch(API_URL);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-        const data = await response.json();
-        if (data.error) throw new Error(data.message || 'Error de API');
-
-        if (data.type === 'twopart') {
-          jokeEl.innerHTML = `
-            <p class="setup">${escapeHtml(data.setup)}</p>
-            <p class="delivery">${escapeHtml(data.delivery)}</p>
-          `;
-        } else {
-          jokeEl.innerHTML = `<p>${escapeHtml(data.joke)}</p>`;
-        }
-      } catch (error) {
-        console.error(error);
-        jokeEl.innerHTML = '<p class="error">No se pudo cargar el chiste. Inténtalo de nuevo.</p>';
-      } finally {
-        btn.disabled = false;
-      }
-    }
-
-    btn.addEventListener('click', loadJoke);
-    loadJoke();
   </script>
 </body>
 </html>
