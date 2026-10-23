@@ -126,26 +126,60 @@
 			.nav-links a { padding: 12px 0; font-size: 1.05rem; }
 		}
 
-		/* Hero */
-		.hero { padding: 64px 0 88px; }
-		.hero .wrap {
-			display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center;
-			min-height: calc(100dvh - 64px - 152px);
+		/* Hero: panel con rejilla tenue y retrato que se funde con el fondo */
+		.hero { padding: 24px 0 0; }
+		.hero-panel {
+			position: relative; overflow: hidden; isolation: isolate;
+			border-radius: var(--radius); border: 1px solid var(--line);
+			background:
+				radial-gradient(60% 80% at 85% 40%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
+				linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 56px 56px,
+				linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 56px 56px,
+				var(--surface);
+			display: grid; grid-template-columns: 1.1fr .9fr;
+			min-height: min(calc(100dvh - 120px), 760px);
 		}
-		.hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); letter-spacing: -0.04em; max-width: 14ch; }
+		.hero-copy { padding: 72px 0 72px 64px; align-self: center; position: relative; z-index: 1; }
+		.hero h1 { font-size: clamp(2.6rem, 5.2vw, 4.6rem); letter-spacing: -0.045em; line-height: 1.02; max-width: 13ch; }
 		.hero h1 em { font-style: normal; color: var(--accent); }
-		.hero-sub { font-size: 1.2rem; color: var(--muted); max-width: 44ch; margin: 28px 0 40px; }
+		.hero-sub { font-size: 1.18rem; color: var(--muted); max-width: 42ch; margin: 28px 0 40px; }
 		.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-		.portrait {
-			border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-			aspect-ratio: 4 / 5; max-height: 72dvh; justify-self: end; width: 100%;
-			background: var(--surface-2);
+		.hero-ctas .btn-ghost { background: var(--surface); }
+		.portrait { position: relative; min-height: 100%; }
+		.portrait img {
+			position: absolute; inset: 0; width: 100%; height: 100%;
+			object-fit: cover; object-position: 50% 18%;
+			-webkit-mask-image: linear-gradient(to right, transparent 0, #000 28%);
+			mask-image: linear-gradient(to right, transparent 0, #000 28%);
 		}
-		.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
-		@media (max-width: 768px) {
-			.hero { padding: 32px 0 64px; }
-			.hero .wrap { grid-template-columns: 1fr; gap: 40px; min-height: 0; }
-			.portrait { order: -1; max-height: 420px; aspect-ratio: 1 / 1; }
+		@media (max-width: 900px) {
+			.hero-panel { grid-template-columns: 1fr; min-height: 0; }
+			.portrait { order: -1; height: clamp(360px, 62vw, 540px); min-height: 0; }
+			.portrait img {
+				-webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+				mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+			}
+			.hero-copy { padding: 0 28px 44px; margin-top: -40px; }
+		}
+
+		/* Stack: una sola banda de logos en movimiento */
+		.stack { padding: 40px 0 0; overflow: hidden; }
+		.stack-track { display: flex; width: max-content; }
+		.stack-track .logo { margin-right: 64px; }
+		.stack-mask {
+			-webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+			mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+		}
+		.logo {
+			width: 34px; height: 34px; flex: none; background: var(--muted);
+			-webkit-mask: var(--src) center / contain no-repeat; mask: var(--src) center / contain no-repeat;
+			transition: background-color .3s;
+		}
+		.logo:hover { background: var(--accent); }
+		@media (prefers-reduced-motion: no-preference) {
+			.stack-track { animation: slide 40s linear infinite; }
+			.stack:hover .stack-track { animation-play-state: paused; }
+			@keyframes slide { to { transform: translateX(-50%); } }
 		}
 
 		/* Sobre mí */
@@ -237,10 +271,15 @@
 		/* Certificaciones */
 		.certs { padding-top: 0; }
 		.cert-feature {
-			display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center;
+			display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; align-items: center;
 			margin-bottom: 80px;
 		}
-		.cert-img { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: #fbfbfb; }
+		.cert-feature > * { min-width: 0; }
+		.cert-img {
+			border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow);
+			background: #fbfbfb; padding: 10px;
+		}
+		.cert-img img { width: 100%; height: auto; border-radius: calc(var(--radius) - 8px); }
 		.cert-feature h3 { font-size: 1.8rem; margin-bottom: 12px; }
 		.cert-feature .mono { color: var(--muted); display: block; margin-bottom: 24px; }
 		.course-list li { display: flex; gap: 12px; padding: 10px 0; }
@@ -320,17 +359,37 @@
 
 	<header class="hero">
 		<div class="wrap">
-			<div>
-				<p class="eyebrow reveal">Fabián Alberto Miliani</p>
-				<h1 class="reveal" style="--i:1">Agentes de IA llevados a <em>interfaces reales</em>.</h1>
-				<p class="hero-sub reveal" style="--i:2">Desarrollador senior con más de 12 años en Angular y TypeScript. Hoy construyo agentes con LLM, RAG y MCP.</p>
-				<div class="hero-ctas reveal" style="--i:3">
-					<a href="#projects" class="btn btn-primary">Ver proyectos <i class="ph ph-arrow-down-right"></i></a>
-					<a href="#contact" class="btn btn-ghost">Contactar</a>
+			<div class="hero-panel">
+				<div class="hero-copy">
+					<p class="eyebrow reveal">Fabián Alberto Miliani</p>
+					<h1 class="reveal" style="--i:1">Agentes de IA llevados a <em>interfaces reales</em>.</h1>
+					<p class="hero-sub reveal" style="--i:2">Desarrollador senior con más de 12 años en Angular y TypeScript. Hoy construyo agentes con LLM, RAG y MCP.</p>
+					<div class="hero-ctas reveal" style="--i:3">
+						<a href="#projects" class="btn btn-primary">Ver proyectos <i class="ph ph-arrow-down-right"></i></a>
+						<a href="#contact" class="btn btn-ghost">Contactar</a>
+					</div>
+				</div>
+				<div class="portrait reveal" style="--i:1">
+					<img src="./bombillo.jpeg" alt="Retrato de Fabián Alberto Miliani" width="928" height="1127" fetchpriority="high">
 				</div>
 			</div>
-			<div class="portrait reveal" style="--i:2">
-				<img src="./bombillo.jpeg" alt="Retrato de Fabián Alberto Miliani" width="928" height="1127" fetchpriority="high">
+		</div>
+		<div class="stack" aria-label="Tecnologías con las que trabajo">
+			<div class="wrap stack-mask">
+				<div class="stack-track" id="stack-track">
+					<span class="logo" role="img" aria-label="Angular" style="--src:url(https://cdn.simpleicons.org/angular)"></span>
+					<span class="logo" role="img" aria-label="TypeScript" style="--src:url(https://cdn.simpleicons.org/typescript)"></span>
+					<span class="logo" role="img" aria-label="Python" style="--src:url(https://cdn.simpleicons.org/python)"></span>
+					<span class="logo" role="img" aria-label="LangChain" style="--src:url(https://cdn.simpleicons.org/langchain)"></span>
+					<span class="logo" role="img" aria-label="Ollama" style="--src:url(https://cdn.simpleicons.org/ollama)"></span>
+					<span class="logo" role="img" aria-label="Hugging Face" style="--src:url(https://cdn.simpleicons.org/huggingface)"></span>
+					<span class="logo" role="img" aria-label="PostgreSQL" style="--src:url(https://cdn.simpleicons.org/postgresql)"></span>
+					<span class="logo" role="img" aria-label="Docker" style="--src:url(https://cdn.simpleicons.org/docker)"></span>
+					<span class="logo" role="img" aria-label="NestJS" style="--src:url(https://cdn.simpleicons.org/nestjs)"></span>
+					<span class="logo" role="img" aria-label="Node.js" style="--src:url(https://cdn.simpleicons.org/nodedotjs)"></span>
+					<span class="logo" role="img" aria-label="RxJS" style="--src:url(https://cdn.simpleicons.org/reactivex)"></span>
+					<span class="logo" role="img" aria-label="GitLab" style="--src:url(https://cdn.simpleicons.org/gitlab)"></span>
+				</div>
 			</div>
 		</div>
 	</header>
@@ -483,12 +542,12 @@
 		</div>
 	</section>
 
-	<section class="certs">
+	<section id="certifications" class="certs">
 		<div class="wrap">
 			<h2 class="section-title reveal">Certificaciones</h2>
 			<div class="cert-feature">
 				<div class="cert-img reveal">
-					<img src="./certificado-ibm.png" alt="Certificado de especialización de IBM en Coursera: Building AI Agents and Agentic Workflows" width="965" height="734" loading="lazy">
+					<img src="./certificado-ibm.png" alt="Certificado de especialización de IBM en Coursera: Building AI Agents and Agentic Workflows" width="960" height="686" loading="lazy">
 				</div>
 				<div class="reveal" style="--i:1">
 					<h3>Building AI Agents and Agentic Workflows</h3>
@@ -575,6 +634,14 @@
 		});
 		navLinks.addEventListener('click', (e) => {
 			if (e.target.tagName === 'A' && navLinks.classList.contains('open')) menuBtn.click();
+		});
+
+		// Duplica los logos para que la banda sea continua
+		const track = document.getElementById('stack-track');
+		[...track.children].forEach((logo) => {
+			const copy = logo.cloneNode(true);
+			copy.setAttribute('aria-hidden', 'true');
+			track.appendChild(copy);
 		});
 
 		// Aparición al entrar en pantalla
