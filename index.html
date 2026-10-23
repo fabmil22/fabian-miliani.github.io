@@ -1,553 +1,597 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>Fabián Alberto Miliani - Desarrollador Senior Frontend &amp; IA Aplicada</title>
-				<meta name="description" content="Fabián Alberto Miliani: desarrollador senior con más de 12 años de experiencia en Angular y TypeScript, especializado en agentes de IA, LLM, RAG y MCP. Certificado por IBM en Building AI Agents and Agentic Workflows.">
-				<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-					<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-						<style>
-							.gradient-bg {
-								background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%);
-							}
-							.card {
-								transition: transform 0.3s ease, box-shadow 0.3s ease;
-							}
-							.card:hover {
-								transform: translateY(-5px);
-								box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-							}
-							.iframe-container {
-								position: relative;
-								overflow: hidden;
-								width: 100%;
-								padding-top: 56.25%; /* 16:9 Aspect Ratio */
-							}
-							.responsive-iframe {
-								position: absolute;
-								top: 0;
-								left: 0;
-								bottom: 0;
-								right: 0;
-								width: 100%;
-								height: 100%;
-								border: none;
-							}
-							.timeline-item {
-								position: relative;
-								padding-left: 2rem;
-								margin-bottom: 2rem;
-							}
-							.timeline-item:before {
-								content: '';
-								position: absolute;
-								left: 0;
-								top: 0;
-								height: 100%;
-								width: 2px;
-								background-color: #e5e7eb;
-							}
-							.timeline-item:after {
-								content: '';
-								position: absolute;
-								left: -0.4rem;
-								top: 0.5rem;
-								height: 1rem;
-								width: 1rem;
-								border-radius: 50%;
-								background-color: #3b82f6;
-							}
-						</style>
-					</head>
-					<body
-						class="bg-gray-50 font-sans">
-						<!-- Navbar -->
-						<nav class="gradient-bg text-white shadow-lg">
-							<div class="container mx-auto px-4 py-3 flex justify-between items-center">
-								<a href="#" class="text-2xl font-bold">Fabián Miliani</a>
-								<div class="hidden md:flex space-x-8">
-									<a href="#about" class="hover:text-gray-200">Sobre mí</a>
-									<a href="#skills" class="hover:text-gray-200">Habilidades</a>
-									<a href="#projects" class="hover:text-gray-200">Proyectos IA</a>
-									<a href="#experience" class="hover:text-gray-200">Experiencia</a>
-									<a href="#agent" class="hover:text-gray-200">Mi Agente IA</a>
-									<a href="#contact" class="hover:text-gray-200">Contacto</a>
-								</div>
-								<button class="md:hidden focus:outline-none">
-									<i class="fas fa-bars text-xl"></i>
-								</button>
-							</div>
-						</nav>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fabián Alberto Miliani - Desarrollador Senior Frontend &amp; IA Aplicada</title>
+	<meta name="description" content="Fabián Alberto Miliani: desarrollador senior con más de 12 años de experiencia en Angular y TypeScript, especializado en agentes de IA, LLM, RAG y MCP. Certificado por IBM en Building AI Agents and Agentic Workflows.">
+	<meta name="color-scheme" content="light dark">
+	<meta property="og:type" content="profile">
+	<meta property="og:title" content="Fabián Alberto Miliani - Senior Frontend &amp; IA Aplicada">
+	<meta property="og:description" content="Agentes de IA con LLM, RAG y MCP, llevados a interfaces reales. Más de 12 años en Angular y TypeScript.">
+	<meta property="og:image" content="./bombillo.jpeg">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+	<link rel="preload" as="image" href="./bombillo.jpeg">
+	<style>
+		/* Tokens. Radios: botones en pill, paneles e imágenes a 16px, etiquetas a 8px. */
+		:root {
+			--bg: #f7f7f8;
+			--surface: #fdfdfd;
+			--surface-2: #f0f0f2;
+			--text: #18181b;
+			--muted: #52525b;
+			--line: #e2e2e6;
+			--accent: #2a49c4;
+			--accent-soft: #eaeefc;
+			--on-accent: #f7f8fd;
+			--shadow: 0 1px 2px rgb(30 40 80 / .05), 0 12px 32px -12px rgb(30 40 80 / .14);
+			--radius: 16px;
+			--radius-sm: 8px;
+			--max: 1200px;
+			--ease: cubic-bezier(.16, 1, .3, 1);
+			--font: "Geist", ui-sans-serif, system-ui, sans-serif;
+			--mono: "Geist Mono", ui-monospace, monospace;
+		}
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--bg: #0d0d10;
+				--surface: #141418;
+				--surface-2: #1b1b20;
+				--text: #f2f2f4;
+				--muted: #a3a3ad;
+				--line: #2a2a31;
+				--accent: #8fa3ff;
+				--accent-soft: #171c33;
+				--on-accent: #0d0d10;
+				--shadow: 0 1px 2px rgb(0 0 0 / .3), 0 12px 32px -12px rgb(0 0 0 / .6);
+			}
+		}
 
-						<!-- Hero Section -->
-						<header class="bg-white py-16">
-							<div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-								<div class="md:w-1/2 mb-8 md:mb-0">
-									<h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Hola, soy
-										<span class="text-blue-600">Fabián Alberto Miliani</span>
-									</h1>
-									<p class="text-xl text-gray-600 mb-6">Desarrollador Senior Frontend &amp; IA Aplicada</p>
-									<p class="text-gray-600 mb-4">Más de 12 años construyendo aplicaciones web y plataformas empresariales. Hoy diseño y construyo agentes de IA de extremo a extremo y los llevo a interfaces reales.</p>
-									<div class="flex flex-wrap gap-2 mb-8">
-										<span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">Agentes de IA</span>
-										<span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">LLM</span>
-										<span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">RAG</span>
-										<span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">MCP</span>
-										<span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">Angular</span>
-										<span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">TypeScript</span>
-										<span class="bg-blue-50 text-blue-700 text-sm px-3 py-1 rounded-full">Python</span>
-									</div>
-									<div class="flex space-x-4">
-										<a href="#contact" class="gradient-bg text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition">Contáctame</a>
-										<a href="#projects" class="bg-white text-blue-600 border border-blue-600 px-6 py-3 rounded-lg hover:bg-gray-50 transition">Ver proyectos de IA</a>
-									</div>
-								</div>
-								<div class="md:w-1/2 flex justify-center items-center">
-									<div class="relative w-64 h-64 overflow-hidden rounded-full shadow-xl">
-										<img src="./bombillo.jpeg" alt="Fabián Miliani" class="absolute inset-0 w-full h-full object-cover object-center">
-									</div>
-								</div>
-							</div>
-						</header>
+		*, *::before, *::after { box-sizing: border-box; }
+		html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+		body {
+			margin: 0;
+			background: var(--bg);
+			color: var(--text);
+			font-family: var(--font);
+			font-size: 17px;
+			line-height: 1.6;
+			-webkit-font-smoothing: antialiased;
+		}
+		img { max-width: 100%; display: block; }
+		a { color: inherit; }
+		h1, h2, h3, h4 { margin: 0; line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; }
+		p { margin: 0; }
+		ul { margin: 0; padding: 0; list-style: none; }
+		.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+		.muted { color: var(--muted); }
+		.mono { font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0; }
+		.eyebrow {
+			font-family: var(--mono);
+			font-size: 0.78rem;
+			text-transform: uppercase;
+			letter-spacing: 0.14em;
+			color: var(--accent);
+			margin-bottom: 20px;
+		}
+		section { padding: 104px 0; }
+		.section-title { font-size: clamp(2rem, 3.6vw, 2.9rem); max-width: 20ch; margin-bottom: 48px; }
+		:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-						<!-- About Section -->
-						<section id="about" class="py-16 bg-gray-50">
-							<div class="container mx-auto px-4">
-								<h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Sobre Mí</h2>
-								<div class="bg-white rounded-xl shadow-md p-8">
-									<p class="text-gray-600 mb-6">
-										Soy desarrollador senior con más de 12 años construyendo aplicaciones web y plataformas de gestión empresarial, especializado en Angular y TypeScript. Ahora me centro en el desarrollo de aplicaciones con IA generativa.
-									</p>
-									<p class="text-gray-600 mb-6">
-										Diseño y construyo agentes de IA de extremo a extremo: tool calling, RAG con bases de datos vectoriales, memoria persistente, servidores MCP, voz y visión, con modelos locales (Ollama) y en la nube (Groq, NVIDIA NIM, Hugging Face). Estoy certificado por IBM en Building AI Agents and Agentic Workflows: sistemas multi-agente, Agentic RAG y workflows con LangGraph, CrewAI, AG2 (AutoGen) y BeeAI.
-									</p>
-									<p class="text-gray-600 mb-6">
-										Mi perfil combina lo que pocos equipos de IA tienen: experiencia sólida en producto y frontend para llevar los agentes a interfaces reales que usan las personas.
-									</p>
-									<div class="flex flex-wrap gap-4 mt-8">
-										<div class="bg-blue-50 px-4 py-2 rounded-lg">
-											<i class="fas fa-briefcase text-blue-600 mr-2"></i>
-											<span class="text-gray-700">12+ años de experiencia</span>
-										</div>
-										<div class="bg-blue-50 px-4 py-2 rounded-lg">
-											<i class="fas fa-robot text-blue-600 mr-2"></i>
-											<span class="text-gray-700">Certificado IBM en Agentes de IA (2026)</span>
-										</div>
-										<div class="bg-blue-50 px-4 py-2 rounded-lg">
-											<i class="fas fa-graduation-cap text-blue-600 mr-2"></i>
-											<span class="text-gray-700">Licenciado en Publicidad - Universidad Alejandro de Humboldt</span>
-										</div>
-										<div class="bg-blue-50 px-4 py-2 rounded-lg">
-											<i class="fas fa-globe text-blue-600 mr-2"></i>
-											<span class="text-gray-700">Español e Italiano</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</section>
+		/* Botones */
+		.btn {
+			display: inline-flex; align-items: center; gap: 10px;
+			padding: 14px 24px;
+			border-radius: 999px;
+			font-weight: 500; font-size: 1rem;
+			text-decoration: none; white-space: nowrap;
+			border: 1px solid transparent;
+			transition: transform .3s var(--ease), background-color .3s var(--ease), border-color .3s var(--ease);
+		}
+		.btn:active { transform: translateY(1px) scale(.98); }
+		.btn-primary { background: var(--accent); color: var(--on-accent); }
+		.btn-primary:hover { transform: translateY(-2px); }
+		.btn-ghost { border-color: var(--line); color: var(--text); background: transparent; }
+		.btn-ghost:hover { border-color: var(--text); }
+		.btn i { font-size: 1.15em; }
 
-						<!-- Skills Section -->
-						<section id="skills" class="py-16 bg-white">
-							<div class="container mx-auto px-4">
-								<h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Mis Habilidades</h2>
-								<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-									<div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600">
-										<div class="text-indigo-600 text-4xl mb-4">
-											<i class="fas fa-robot"></i>
-										</div>
-										<h3 class="text-xl font-bold text-gray-800 mb-2">IA Generativa y Agentes</h3>
-										<p class="text-gray-600">LangChain, LangGraph, CrewAI, AG2 (AutoGen), IBM BeeAI, sistemas multi-agente, Agentic RAG, tool calling, Model Context Protocol (MCP), prompt engineering, N8N</p>
-									</div>
-									<div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600">
-										<div class="text-indigo-600 text-4xl mb-4">
-											<i class="fas fa-brain"></i>
-										</div>
-										<h3 class="text-xl font-bold text-gray-800 mb-2">LLM y RAG</h3>
-										<p class="text-gray-600">Ollama (Qwen3, Qwen2.5-VL), Groq API, NVIDIA NIM, Hugging Face, Gradio, embeddings, PostgreSQL + pgvector, búsqueda semántica, memoria persistente</p>
-									</div>
-									<div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600">
-										<div class="text-indigo-600 text-4xl mb-4">
-											<i class="fas fa-microphone"></i>
-										</div>
-										<h3 class="text-xl font-bold text-gray-800 mb-2">IA Multimodal</h3>
-										<p class="text-gray-600">Visión (análisis de imágenes y documentos), voz con Whisper (STT) y Piper (TTS), generación de imágenes con FLUX.1</p>
-									</div>
-									<div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600">
-										<div class="text-blue-600 text-4xl mb-4">
-											<i class="fab fa-angular"></i>
-										</div>
-										<h3 class="text-xl font-bold text-gray-800 mb-2">Frontend</h3>
-										<p class="text-gray-600">Angular (v2 a la última), TypeScript, JavaScript, RxJS, Redux, HTML5, CSS3, SCSS, Jest, Ionic</p>
-									</div>
-									<div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600">
-										<div class="text-blue-600 text-4xl mb-4">
-											<i class="fas fa-server"></i>
-										</div>
-										<h3 class="text-xl font-bold text-gray-800 mb-2">Backend</h3>
-										<p class="text-gray-600">Python, Node.js, NestJS, PHP, APIs RESTful, Swagger, MySQL, PostgreSQL</p>
-									</div>
-									<div class="card bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600">
-										<div class="text-blue-600 text-4xl mb-4">
-											<i class="fas fa-tools"></i>
-										</div>
-										<h3 class="text-xl font-bold text-gray-800 mb-2">Herramientas y Metodologías</h3>
-										<p class="text-gray-600">Docker, Git, GitLab, VS Code, Scrum, desarrollo ágil, liderazgo de equipos, SEO, Adobe Suite</p>
-									</div>
-								</div>
-							</div>
-						</section>
+		/* Navegación */
+		.nav {
+			position: sticky; top: 0; z-index: 20;
+			background: color-mix(in srgb, var(--bg) 82%, transparent);
+			backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+			border-bottom: 1px solid var(--line);
+		}
+		.nav .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; }
+		.brand { font-weight: 600; text-decoration: none; letter-spacing: -0.02em; font-size: 1.05rem; }
+		.nav-links { display: flex; gap: 32px; }
+		.nav-links a { text-decoration: none; color: var(--muted); font-size: 0.95rem; transition: color .2s; }
+		.nav-links a:hover { color: var(--text); }
+		.menu-btn {
+			display: none; background: none; border: 1px solid var(--line); color: var(--text);
+			width: 40px; height: 40px; border-radius: 999px; font-size: 1.2rem; cursor: pointer;
+			align-items: center; justify-content: center;
+		}
+		@media (max-width: 900px) {
+			.menu-btn { display: inline-flex; }
+			.nav-links {
+				display: none; position: absolute; top: 64px; left: 0; right: 0;
+				flex-direction: column; gap: 0; padding: 8px 24px 20px;
+				background: var(--bg); border-bottom: 1px solid var(--line);
+			}
+			.nav-links.open { display: flex; }
+			.nav-links a { padding: 12px 0; font-size: 1.05rem; }
+		}
 
-						<!-- Projects Section -->
-						<section id="projects" class="py-16 bg-indigo-50">
-							<div class="container mx-auto px-4">
-								<h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Proyectos de IA</h2>
-								<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-									<div class="card bg-white rounded-xl shadow-md p-6 md:col-span-3">
-										<div class="flex items-center mb-4">
-											<div class="text-indigo-600 text-3xl mr-4"><i class="fas fa-headset"></i></div>
-											<div>
-												<h3 class="text-xl font-bold text-gray-800">Citrox</h3>
-												<p class="text-gray-500">Asistente de IA personal con agentes, RAG y voz · proyecto propio</p>
-											</div>
-										</div>
-										<ul class="text-gray-600 space-y-2 list-disc pl-5">
-											<li>Agente con tool calling (Groq, Qwen3-32B) que ejecuta acciones reales: archivos, lectura de correo, generación de imágenes y carga dinámica de skills.</li>
-											<li>RAG sobre documentación y código de proyectos propios, con PostgreSQL + pgvector en Docker.</li>
-											<li>Memoria persistente de conversaciones y conocimiento, con umbral de similitud para evitar recuperar contexto irrelevante.</li>
-											<li>Servidores MCP (Model Context Protocol) propios para acceso a archivos y correo IMAP.</li>
-											<li>Interfaz por voz: Whisper (STT) + Piper (TTS), con la voz como disparador de herramientas del agente.</li>
-											<li>Visión con Qwen2.5-VL, generación de imágenes con FLUX.1 (NVIDIA NIM) y agentes especialistas por dominio, optimizado para una GPU de 6 GB.</li>
-										</ul>
-									</div>
-									<div class="card bg-white rounded-xl shadow-md p-6 md:col-span-2">
-										<div class="flex items-center mb-4">
-											<div class="text-indigo-600 text-3xl mr-4"><i class="fas fa-file-alt"></i></div>
-											<div>
-												<h3 class="text-xl font-bold text-gray-800">Actualizador de CV con IA local</h3>
-												<p class="text-gray-500">Proyecto propio · Python + Ollama</p>
-											</div>
-										</div>
-										<p class="text-gray-600">Pipeline que extrae los datos de certificados en PDF e imagen con un modelo de visión (Qwen2.5-VL), reescribe el CV optimizado para ATS con Qwen3 y lo exporta a PDF. Todo en local, sin enviar datos personales a la nube.</p>
-									</div>
-									<div class="card bg-white rounded-xl shadow-md p-6">
-										<div class="flex items-center mb-4">
-											<div class="text-indigo-600 text-3xl mr-4"><i class="fas fa-comments"></i></div>
-											<h3 class="text-xl font-bold text-gray-800">Agente de perfil profesional</h3>
-										</div>
-										<p class="text-gray-600 mb-4">Asistente conversacional con Gradio que responde preguntas sobre mi trayectoria, publicado en Hugging Face Spaces.</p>
-										<a href="#agent" class="text-blue-600 hover:underline">Probarlo <i class="fas fa-arrow-right ml-1"></i></a>
-									</div>
-								</div>
-							</div>
-						</section>
+		/* Hero */
+		.hero { padding: 64px 0 88px; }
+		.hero .wrap {
+			display: grid; grid-template-columns: 1.15fr .85fr; gap: 64px; align-items: center;
+			min-height: calc(100dvh - 64px - 152px);
+		}
+		.hero h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); letter-spacing: -0.04em; max-width: 14ch; }
+		.hero h1 em { font-style: normal; color: var(--accent); }
+		.hero-sub { font-size: 1.2rem; color: var(--muted); max-width: 44ch; margin: 28px 0 40px; }
+		.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+		.portrait {
+			border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+			aspect-ratio: 4 / 5; max-height: 72dvh; justify-self: end; width: 100%;
+			background: var(--surface-2);
+		}
+		.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+		@media (max-width: 768px) {
+			.hero { padding: 32px 0 64px; }
+			.hero .wrap { grid-template-columns: 1fr; gap: 40px; min-height: 0; }
+			.portrait { order: -1; max-height: 420px; aspect-ratio: 1 / 1; }
+		}
 
-							<!-- Experience Section -->
-							<section id="experience" class="py-16 bg-gray-50">
-								<div class="container mx-auto px-4">
-									<h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Experiencia Profesional</h2>
-									<div class="bg-white rounded-xl shadow-md p-8">
-										<div class="timeline-item">
-											<h3 class="text-xl font-bold text-gray-800">Desarrollador Senior Frontend
-											</h3>
+		/* Sobre mí */
+		.about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: start; }
+		.about-text p { color: var(--muted); max-width: 62ch; margin-bottom: 20px; font-size: 1.08rem; }
+		.about-text p:first-child { color: var(--text); font-size: 1.3rem; line-height: 1.5; letter-spacing: -0.01em; }
+		.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 28px; padding-top: 8px; }
+		.fact i { font-size: 1.5rem; color: var(--accent); }
+		.fact strong { display: block; font-size: 1.05rem; font-weight: 600; margin: 10px 0 4px; }
+		.fact span { color: var(--muted); font-size: 0.95rem; }
+		@media (max-width: 768px) {
+			.about-grid { grid-template-columns: 1fr; gap: 48px; }
+		}
 
-											<p class="text-blue-600 font-semibold">GFT Technologies</p>
-											<p class="text-gray-500 mb-2">mayo de 2024 - Presente (2 años 6 meses)</p>
-											<p class="text-gray-600">Madrid, Comunidad de Madrid, España</p>
-										</div>
-										<div class="timeline-item">
-											<h3 class="text-xl font-bold text-gray-800">Desarrollador de aplicación de software</h3>
-											<p class="text-blue-600 font-semibold">Plexus Tech</p>
-											<p class="text-gray-500 mb-2">mayo de 2023 - junio de 2024 (1 año 2 meses)</p>
-											<p class="text-gray-600">Madrid, Comunidad de Madrid, España</p>
-										</div>
-										<div class="timeline-item">
-											<h3 class="text-xl font-bold text-gray-800">Team Lead Manager</h3>
-											<p class="text-blue-600 font-semibold">Searchit</p>
-											<p class="text-gray-500 mb-2">abril de 2022 - agosto de 2023 (1 año 5 meses)</p>
-										</div>
-										<div class="timeline-item">
-											<h3 class="text-xl font-bold text-gray-800">Desarrollador de front-end</h3>
-											<p class="text-blue-600 font-semibold">Paradigma Digital</p>
-											<p class="text-gray-500 mb-2">mayo de 2018 - marzo de 2022 (3 años 11 meses)</p>
-											<p class="text-gray-600">Aravaca</p>
-										</div>
-										<div class="timeline-item">
-											<h3 class="text-xl font-bold text-gray-800">Programador sénior</h3>
-											<p class="text-blue-600 font-semibold">Sportsnet Red Social Deportiva y Eventos, S.L.</p>
-											<p class="text-gray-500 mb-2">julio de 2016 - noviembre de 2016 (5 meses)</p>
-											<p class="text-gray-600">Alcobendas y alrededores, España</p>
-											<p class="text-gray-600">Desarrollar aplicativos web y sistemas administrativos para diferentes clientes empresariales. Programación Front end con PHP, Angular, javascript, html 5, Ajax, jquery, entre otros.</p>
-										</div>
-										<div class="timeline-item">
-											<h3 class="text-xl font-bold text-gray-800">GERENTE DE DESARROLLO</h3>
-											<p class="text-blue-600 font-semibold">LIDERWEB.CO</p>
-											<p class="text-gray-500 mb-2">septiembre de 2013 - febrero de 2016 (2 años 6 meses)</p>
-											<p class="text-gray-600">Crear y desarrollo de sistemas y aplicaciones web. Planificación y creación de sitios web. Asesoramiento en desarrollo y tecnología para empresas.</p>
-										</div>
-									</div>
-								</div>
-							</section>
+		/* Habilidades: bento */
+		.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+		.tile {
+			background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+			padding: 32px; display: flex; flex-direction: column; gap: 14px;
+		}
+		.tile > i { font-size: 1.7rem; color: var(--accent); }
+		.tile h3 { font-size: 1.3rem; }
+		.tile.span-4 { grid-column: span 4; }
+		.tile.span-2 { grid-column: span 2; }
+		.tile.span-6 { grid-column: span 6; flex-direction: row; align-items: center; gap: 32px; }
+		.tile.feature {
+			background:
+				radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--accent) 22%, transparent) 1px, transparent 0) 0 0 / 18px 18px,
+				var(--accent-soft);
+			border-color: color-mix(in srgb, var(--accent) 22%, var(--line));
+		}
+		.tile.feature h3 { font-size: 1.8rem; }
+		.tile.tinted { background: linear-gradient(160deg, var(--accent-soft), var(--surface) 70%); }
+		.tile.span-6 h3 { white-space: nowrap; }
+		.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+		.tag {
+			font-family: var(--mono); font-size: 0.8rem; padding: 5px 10px;
+			border-radius: var(--radius-sm); background: var(--surface-2); color: var(--text);
+		}
+		.feature .tag { background: var(--surface); }
+		@media (max-width: 900px) {
+			.tile.span-4, .tile.span-2, .tile.span-6 { grid-column: span 6; }
+			.tile.span-6 { flex-direction: column; align-items: flex-start; }
+		}
 
-							<!-- Certifications Section -->
-							<!-- Certifications Section -->
-							<section class="py-16 bg-white">
-								<div class="container mx-auto px-4">
-									<h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Certificaciones</h2>
-									<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fas fa-robot"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">Building AI Agents and Agentic Workflows</h3>
-											<p class="text-gray-600">Certificado de especialización IBM · Coursera · septiembre 2026</p>
-											<p class="text-gray-600">Fundamentals of Building AI Agents</p>
-											<p class="text-gray-600">Agentic AI with LangChain and LangGraph</p>
-											<p class="text-gray-600">Agentic AI with LangGraph, CrewAI, AutoGen and BeeAI</p>
-										</div>
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fas fa-handshake"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">Cómo potenciar tus conversaciones de ventas</h3>
-											<p class="text-gray-600">LinkedIn Learning · octubre 2026</p>
-											<p class="text-gray-600">Comunicación y negociación orientadas al cliente</p>
-										</div>
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fas fa-certificate"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">IBM Advance Career</h3>
-											<p class="text-gray-600">Education web site developer program</p>
-											<p class="text-gray-600">Certificación profesional en desarrollo web avanzado</p>
+		/* Proyectos */
+		.projects { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+		.citrox-head { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 760px; margin-bottom: 56px; }
+		.citrox-head h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); }
+		.citrox-head p { color: var(--muted); font-size: 1.12rem; max-width: 60ch; }
+		.caps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 40px; }
+		.cap i { font-size: 1.4rem; color: var(--accent); }
+		.cap h3 { font-size: 1.1rem; margin: 14px 0 8px; }
+		.cap p { color: var(--muted); font-size: 0.98rem; }
+		.side-project {
+			margin-top: 88px; padding: 40px; border-radius: var(--radius);
+			background: var(--bg); border: 1px solid var(--line);
+			display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start;
+		}
+		.side-project > i {
+			font-size: 1.6rem; color: var(--accent); width: 56px; height: 56px; border-radius: 999px;
+			display: grid; place-items: center; background: var(--accent-soft);
+		}
+		.side-project h3 { font-size: 1.5rem; margin-bottom: 6px; }
+		.side-project .mono { color: var(--muted); display: block; margin-bottom: 14px; }
+		.side-project p { color: var(--muted); max-width: 70ch; }
+		@media (max-width: 900px) { .caps { grid-template-columns: 1fr 1fr; } }
+		@media (max-width: 640px) {
+			.caps { grid-template-columns: 1fr; gap: 36px; }
+			.side-project { grid-template-columns: 1fr; padding: 28px; }
+		}
 
-										</div>
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fas fa-code"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">Visual Studio Code 2022</h3>
-											<p class="text-gray-600">Esencial · LinkedIn Learning · mayo 2023</p>
-											<p class="text-gray-600">Dominio de herramientas y extensiones para desarrollo eficiente</p>
+		/* Experiencia */
+		.timeline { position: relative; max-width: 920px; }
+		.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; padding: 32px 0; border-top: 1px solid var(--line); }
+		.job:first-child { border-top: 0; padding-top: 0; }
+		.job .when { color: var(--muted); padding-top: 4px; }
+		.job h3 { font-size: 1.3rem; }
+		.job .company { color: var(--accent); font-weight: 500; margin: 6px 0 2px; }
+		.job .where { color: var(--muted); font-size: 0.95rem; }
+		.job .desc { color: var(--muted); margin-top: 12px; max-width: 62ch; }
+		.now {
+			display: inline-block; margin-left: 10px; vertical-align: middle;
+			font-family: var(--mono); font-size: 0.72rem; padding: 3px 8px; border-radius: var(--radius-sm);
+			background: var(--accent-soft); color: var(--accent); letter-spacing: 0;
+		}
+		@media (max-width: 640px) { .job { grid-template-columns: 1fr; gap: 8px; } }
 
-										</div>
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fab fa-python"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">Python</h3>
-											<p class="text-gray-600">Python esencial (2022) · mayo 2023</p>
-											<p class="text-gray-600">Python Object-Oriented Programming (2020) · julio 2023</p>
+		/* Certificaciones */
+		.certs { padding-top: 0; }
+		.cert-feature {
+			display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center;
+			margin-bottom: 80px;
+		}
+		.cert-img { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: #fbfbfb; }
+		.cert-feature h3 { font-size: 1.8rem; margin-bottom: 12px; }
+		.cert-feature .mono { color: var(--muted); display: block; margin-bottom: 24px; }
+		.course-list li { display: flex; gap: 12px; padding: 10px 0; }
+		.course-list i { color: var(--accent); font-size: 1.2rem; margin-top: 3px; }
+		.cert-groups { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 48px; }
+		.cert-groups h4 { font-size: 1.05rem; padding-bottom: 14px; margin-bottom: 8px; border-bottom: 1px solid var(--line); }
+		.cert-groups li { padding: 12px 0; }
+		.cert-groups li strong { display: block; font-weight: 500; }
+		.cert-groups li span { color: var(--muted); font-size: 0.92rem; }
+		@media (max-width: 900px) {
+			.cert-feature, .cert-groups { grid-template-columns: 1fr; gap: 40px; }
+		}
 
-											<p class="text-gray-600">Advanced Python (2018) · agosto 2023</p>
-											<p class="text-gray-600">LinkedIn Learning</p>
+		/* Agente */
+		.agent-panel {
+			background: var(--accent); color: var(--on-accent); border-radius: var(--radius);
+			padding: 72px 64px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end;
+		}
+		.agent-panel h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); max-width: 18ch; margin-bottom: 16px; }
+		.agent-panel p { max-width: 52ch; opacity: .88; font-size: 1.08rem; }
+		.agent-panel .btn { background: var(--bg); color: var(--text); }
+		.agent-panel .btn:hover { transform: translateY(-2px); }
+		@media (max-width: 768px) {
+			.agent-panel { grid-template-columns: 1fr; padding: 44px 28px; }
+		}
 
-											<p class="text-gray-600">Fundamentos de programación en Python y aplicaciones prácticas</p>
+		/* Contacto */
+		.contact { padding-top: 40px; }
+		.contact-mail {
+			display: inline-block; font-size: clamp(1.6rem, 4.4vw, 3.6rem); font-weight: 600;
+			letter-spacing: -0.035em; text-decoration: none; line-height: 1.15;
+			background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 2px no-repeat;
+			transition: background-size .5s var(--ease);
+			overflow-wrap: anywhere;
+		}
+		.contact-mail:hover { background-size: 100% 2px; }
+		.contact-grid { display: grid; grid-template-columns: repeat(4, auto); justify-content: start; gap: 24px 64px; margin-top: 56px; }
+		.contact-grid .mono { color: var(--muted); display: block; margin-bottom: 6px; }
+		.contact-grid a { text-decoration: none; }
+		.contact-grid a:hover { color: var(--accent); }
+		.contact-grid i { margin-right: 6px; }
+		@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
 
-										</div>
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fab fa-python"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">Machine learning y Automatización</h3>
+		footer { border-top: 1px solid var(--line); padding: 32px 0; }
+		footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 0.92rem; }
 
-											<p class="text-gray-600">Cómo obtener valor con machine learning en tu empresa · LinkedIn Learning · agosto 2023</p>
+		/* Movimiento: entrada del hero y aparición de secciones al hacer scroll */
+		@media (prefers-reduced-motion: no-preference) {
+			.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
+			.reveal.in { opacity: 1; transform: none; }
+			.portrait img { transform: scale(1.06); transition: transform 1.4s var(--ease); }
+			.portrait.in img { transform: scale(1); }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			html { scroll-behavior: auto; }
+			.btn, .btn:hover, .btn:active { transform: none; }
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav" aria-label="Principal">
+		<div class="wrap">
+			<a href="#" class="brand">Fabián Miliani</a>
+			<div class="nav-links" id="nav-links">
+				<a href="#about">Sobre mí</a>
+				<a href="#skills">Habilidades</a>
+				<a href="#projects">Proyectos IA</a>
+				<a href="#experience">Experiencia</a>
+				<a href="#agent">Mi Agente IA</a>
+				<a href="#contact">Contacto</a>
+			</div>
+			<button class="menu-btn" aria-controls="nav-links" aria-expanded="false" aria-label="Abrir menú">
+				<i class="ph ph-list"></i>
+			</button>
+		</div>
+	</nav>
 
-											<p class="text-gray-600">N8N desde cero: Automatizaciones, Agentes de IA</p>
+	<header class="hero">
+		<div class="wrap">
+			<div>
+				<p class="eyebrow reveal">Fabián Alberto Miliani</p>
+				<h1 class="reveal" style="--i:1">Agentes de IA llevados a <em>interfaces reales</em>.</h1>
+				<p class="hero-sub reveal" style="--i:2">Desarrollador senior con más de 12 años en Angular y TypeScript. Hoy construyo agentes con LLM, RAG y MCP.</p>
+				<div class="hero-ctas reveal" style="--i:3">
+					<a href="#projects" class="btn btn-primary">Ver proyectos <i class="ph ph-arrow-down-right"></i></a>
+					<a href="#contact" class="btn btn-ghost">Contactar</a>
+				</div>
+			</div>
+			<div class="portrait reveal" style="--i:2">
+				<img src="./bombillo.jpeg" alt="Retrato de Fabián Alberto Miliani" width="928" height="1127" fetchpriority="high">
+			</div>
+		</div>
+	</header>
 
+	<section id="about">
+		<div class="wrap about-grid">
+			<div class="about-text reveal">
+				<h2 class="section-title">Del frontend empresarial a los agentes de IA</h2>
+				<p>Llevo más de 12 años construyendo aplicaciones web y plataformas de gestión empresarial con Angular y TypeScript. Ahora me centro en aplicaciones con IA generativa.</p>
+				<p>Diseño y construyo agentes de IA de extremo a extremo: tool calling, RAG con bases de datos vectoriales, memoria persistente, servidores MCP, voz y visión. Trabajo con modelos locales (Ollama) y en la nube (Groq, NVIDIA NIM, Hugging Face).</p>
+				<p>Mi perfil combina lo que pocos equipos de IA tienen: experiencia sólida en producto y frontend para llevar los agentes a interfaces que usan las personas.</p>
+			</div>
+			<div class="facts">
+				<div class="fact reveal" style="--i:1"><i class="ph ph-briefcase"></i><strong>12+ años</strong><span>de experiencia en desarrollo web</span></div>
+				<div class="fact reveal" style="--i:2"><i class="ph ph-seal-check"></i><strong>Certificado IBM</strong><span>Building AI Agents and Agentic Workflows, 2026</span></div>
+				<div class="fact reveal" style="--i:3"><i class="ph ph-graduation-cap"></i><strong>Licenciado en Publicidad</strong><span>Universidad Alejandro de Humboldt</span></div>
+				<div class="fact reveal" style="--i:4"><i class="ph ph-translate"></i><strong>Idiomas</strong><span>Español e italiano</span></div>
+			</div>
+		</div>
+	</section>
 
-											<p class="text-gray-600">Fundamentos de programación en Python y aplicaciones prácticas</p>
-										</div>
+	<section id="skills">
+		<div class="wrap">
+			<h2 class="section-title reveal">Con qué trabajo</h2>
+			<div class="bento">
+				<article class="tile feature span-4 reveal">
+					<i class="ph ph-robot"></i>
+					<h3>IA generativa y agentes</h3>
+					<p class="muted">Sistemas multi-agente, Agentic RAG, tool calling y prompt engineering.</p>
+					<div class="tags">
+						<span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">CrewAI</span><span class="tag">AG2 (AutoGen)</span><span class="tag">IBM BeeAI</span><span class="tag">MCP</span><span class="tag">N8N</span>
+					</div>
+				</article>
+				<article class="tile span-2 reveal" style="--i:1">
+					<i class="ph ph-brain"></i>
+					<h3>LLM y RAG</h3>
+					<div class="tags">
+						<span class="tag">Ollama</span><span class="tag">Qwen3</span><span class="tag">Groq</span><span class="tag">NVIDIA NIM</span><span class="tag">Hugging Face</span><span class="tag">Gradio</span><span class="tag">pgvector</span><span class="tag">Embeddings</span>
+					</div>
+				</article>
+				<article class="tile tinted span-2 reveal">
+					<i class="ph ph-microphone"></i>
+					<h3>IA multimodal</h3>
+					<p class="muted">Visión sobre imágenes y documentos, voz con Whisper y Piper, imágenes con FLUX.1.</p>
+				</article>
+				<article class="tile span-2 reveal" style="--i:1">
+					<i class="ph ph-browser"></i>
+					<h3>Frontend</h3>
+					<div class="tags">
+						<span class="tag">Angular</span><span class="tag">TypeScript</span><span class="tag">RxJS</span><span class="tag">Redux</span><span class="tag">SCSS</span><span class="tag">Jest</span><span class="tag">Ionic</span>
+					</div>
+				</article>
+				<article class="tile span-2 reveal" style="--i:2">
+					<i class="ph ph-hard-drives"></i>
+					<h3>Backend</h3>
+					<div class="tags">
+						<span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">NestJS</span><span class="tag">PHP</span><span class="tag">REST</span><span class="tag">MySQL</span><span class="tag">PostgreSQL</span>
+					</div>
+				</article>
+				<article class="tile span-6 reveal">
+					<i class="ph ph-wrench"></i>
+					<h3>Herramientas y método</h3>
+					<div class="tags" style="margin-top:0">
+						<span class="tag">Docker</span><span class="tag">Git</span><span class="tag">GitLab</span><span class="tag">VS Code</span><span class="tag">Scrum</span><span class="tag">Liderazgo de equipos</span><span class="tag">SEO</span><span class="tag">Adobe Suite</span>
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
 
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fab fa-js"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">JavaScript avanzado: Buenas prácticas</h3>
-											<p class="text-gray-600">LinkedIn Learning · diciembre 2021</p>
-											<p class="text-gray-600">Buenas prácticas y patrones para escribir JavaScript mantenible</p>
-										</div>
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fab fa-js"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">TypeScript Avanzado</h3>
-											<p class="text-gray-600">Técnicas y patrones avanzados</p>
-											<p class="text-gray-600">Implementación de tipos complejos, genéricos y patrones de diseño</p>
-										</div>
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fab fa-js"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">TypeScript: Trucos</h3>
-											<p class="text-gray-600">Optimización y mejores prácticas</p>
-											<p class="text-gray-600">Técnicas avanzadas para mejorar la productividad y calidad del código</p>
-										</div>
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fab fa-angular"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">Buenas prácticas en Angular</h3>
-											<p class="text-gray-600">Arquitectura y patrones de diseño</p>
-											<p class="text-gray-600">Implementación de aplicaciones escalables y mantenibles</p>
-										</div>
+	<section id="projects" class="projects">
+		<div class="wrap">
+			<div class="citrox-head reveal">
+				<p class="eyebrow" style="margin-bottom:4px">Proyectos de IA</p>
+				<h2>Citrox, mi asistente de IA personal</h2>
+				<p>Un proyecto propio con agentes, RAG, memoria y voz, optimizado para correr en una GPU de 6 GB.</p>
+			</div>
+			<div class="caps">
+				<div class="cap reveal"><i class="ph ph-lightning"></i><h3>Agente con tool calling</h3><p>Groq con Qwen3-32B ejecutando acciones reales: archivos, correo, imágenes y carga dinámica de skills.</p></div>
+				<div class="cap reveal" style="--i:1"><i class="ph ph-database"></i><h3>RAG sobre mi código</h3><p>Documentación y proyectos propios indexados en PostgreSQL con pgvector, en Docker.</p></div>
+				<div class="cap reveal" style="--i:2"><i class="ph ph-clock-counter-clockwise"></i><h3>Memoria persistente</h3><p>Conversaciones y conocimiento, con umbral de similitud para no recuperar contexto irrelevante.</p></div>
+				<div class="cap reveal"><i class="ph ph-plugs-connected"></i><h3>Servidores MCP propios</h3><p>Model Context Protocol para acceso a archivos y lectura de correo IMAP.</p></div>
+				<div class="cap reveal" style="--i:1"><i class="ph ph-waveform"></i><h3>Interfaz por voz</h3><p>Whisper para escuchar y Piper para hablar. La voz dispara herramientas del agente.</p></div>
+				<div class="cap reveal" style="--i:2"><i class="ph ph-eye"></i><h3>Visión y especialistas</h3><p>Qwen2.5-VL para imágenes, FLUX.1 en NVIDIA NIM y agentes especialistas por dominio.</p></div>
+			</div>
+			<article class="side-project reveal">
+				<i class="ph ph-file-text"></i>
+				<div>
+					<h3>Actualizador de CV con IA local</h3>
+					<span class="mono">Python + Ollama</span>
+					<p>Extrae los datos de certificados en PDF e imagen con un modelo de visión (Qwen2.5-VL), reescribe el CV optimizado para ATS con Qwen3 y lo exporta a PDF. Todo en local, sin enviar datos personales a la nube.</p>
+				</div>
+			</article>
+		</div>
+	</section>
 
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fab fa-docker"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">Docker</h3>
-											<p class="text-gray-600">Contenedores y despliegue</p>
-											<p class="text-gray-600">Implementación de entornos de desarrollo y producción consistentes</p>
-										</div>
-										<div class="card bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-											<div class="text-blue-600 text-4xl mb-4">
-												<i class="fas fa-search"></i>
-											</div>
-											<h3 class="text-xl font-bold text-gray-800 mb-2">SEO</h3>
-											<p class="text-gray-600">Optimización para motores de búsqueda</p>
-											<p class="text-gray-600">Estrategias para mejorar la visibilidad y posicionamiento web</p>
-										</div>
-									</div>
-								</div>
-							</section>
+	<section id="experience">
+		<div class="wrap">
+			<h2 class="section-title reveal">Trayectoria</h2>
+			<div class="timeline">
+				<div class="job reveal">
+					<p class="when mono">may 2024 - hoy</p>
+					<div>
+						<h3>Desarrollador Senior Frontend <span class="now">Actual</span></h3>
+						<p class="company">GFT Technologies</p>
+						<p class="where">Madrid, España</p>
+					</div>
+				</div>
+				<div class="job reveal">
+					<p class="when mono">may 2023 - jun 2024</p>
+					<div>
+						<h3>Desarrollador de aplicación de software</h3>
+						<p class="company">Plexus Tech</p>
+						<p class="where">Madrid, España</p>
+					</div>
+				</div>
+				<div class="job reveal">
+					<p class="when mono">abr 2022 - ago 2023</p>
+					<div>
+						<h3>Team Lead Manager</h3>
+						<p class="company">Searchit</p>
+					</div>
+				</div>
+				<div class="job reveal">
+					<p class="when mono">may 2018 - mar 2022</p>
+					<div>
+						<h3>Desarrollador front-end</h3>
+						<p class="company">Paradigma Digital</p>
+						<p class="where">Aravaca, Madrid</p>
+					</div>
+				</div>
+				<div class="job reveal">
+					<p class="when mono">jul 2016 - nov 2016</p>
+					<div>
+						<h3>Programador sénior</h3>
+						<p class="company">Sportsnet Red Social Deportiva y Eventos, S.L.</p>
+						<p class="where">Alcobendas, Madrid</p>
+						<p class="desc">Aplicativos web y sistemas administrativos para clientes empresariales, con PHP, Angular, JavaScript, HTML5, Ajax y jQuery.</p>
+					</div>
+				</div>
+				<div class="job reveal">
+					<p class="when mono">sep 2013 - feb 2016</p>
+					<div>
+						<h3>Gerente de desarrollo</h3>
+						<p class="company">LIDERWEB.CO</p>
+						<p class="desc">Desarrollo de sistemas y aplicaciones web, planificación de sitios y asesoramiento tecnológico para empresas.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
+	<section class="certs">
+		<div class="wrap">
+			<h2 class="section-title reveal">Certificaciones</h2>
+			<div class="cert-feature">
+				<div class="cert-img reveal">
+					<img src="./certificado-ibm.png" alt="Certificado de especialización de IBM en Coursera: Building AI Agents and Agentic Workflows" width="965" height="734" loading="lazy">
+				</div>
+				<div class="reveal" style="--i:1">
+					<h3>Building AI Agents and Agentic Workflows</h3>
+					<span class="mono">IBM en Coursera, septiembre 2026</span>
+					<ul class="course-list">
+						<li><i class="ph ph-check-circle"></i>Fundamentals of Building AI Agents</li>
+						<li><i class="ph ph-check-circle"></i>Agentic AI with LangChain and LangGraph</li>
+						<li><i class="ph ph-check-circle"></i>Agentic AI with LangGraph, CrewAI, AutoGen and BeeAI</li>
+					</ul>
+				</div>
+			</div>
+			<div class="cert-groups">
+				<div class="reveal">
+					<h4>IA y automatización</h4>
+					<ul>
+						<li><strong>Cómo obtener valor con machine learning en tu empresa</strong><span>LinkedIn Learning, agosto 2023</span></li>
+						<li><strong>N8N desde cero: automatizaciones y agentes de IA</strong><span>Automatización de flujos con IA</span></li>
+						<li><strong>Python esencial, POO y Advanced Python</strong><span>LinkedIn Learning, mayo a agosto 2023</span></li>
+					</ul>
+				</div>
+				<div class="reveal" style="--i:1">
+					<h4>Desarrollo</h4>
+					<ul>
+						<li><strong>IBM Advance Career</strong><span>Education web site developer program</span></li>
+						<li><strong>TypeScript avanzado y TypeScript: trucos</strong><span>Tipos complejos, genéricos y patrones</span></li>
+						<li><strong>Buenas prácticas en Angular</strong><span>Arquitectura y patrones de diseño</span></li>
+						<li><strong>JavaScript avanzado: buenas prácticas</strong><span>LinkedIn Learning, diciembre 2021</span></li>
+						<li><strong>Docker y Visual Studio Code 2022</strong><span>Contenedores, despliegue y entorno de trabajo</span></li>
+					</ul>
+				</div>
+				<div class="reveal" style="--i:2">
+					<h4>Negocio</h4>
+					<ul>
+						<li><strong>Cómo potenciar tus conversaciones de ventas</strong><span>LinkedIn Learning, octubre 2026</span></li>
+						<li><strong>SEO</strong><span>Visibilidad y posicionamiento web</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
 
-							<!-- Agent Section -->
-							<section id="agent" class="py-16 bg-gray-50">
-								<div class="container mx-auto px-4">
+	<section id="agent">
+		<div class="wrap">
+			<div class="agent-panel reveal">
+				<div>
+					<h2>Pregúntale a mi agente por mi trayectoria</h2>
+					<p>Un asistente conversacional hecho con Gradio y publicado en Hugging Face Spaces. Se abre en una pestaña nueva.</p>
+				</div>
+				<a href="https://huggingface.co/spaces/fabmil22/my_perfil" target="_blank" rel="noopener" class="btn">
+					<i class="ph ph-chat-circle-dots"></i>Abrir el agente
+				</a>
+			</div>
+		</div>
+	</section>
 
+	<section id="contact" class="contact">
+		<div class="wrap">
+			<h2 class="section-title reveal">¿Construimos algo juntos?</h2>
+			<a class="contact-mail reveal" href="mailto:fabianfabian22@hotmail.com">fabianfabian22@hotmail.com</a>
+			<div class="contact-grid reveal">
+				<div><span class="mono">Ubicación</span>Gines, Andalucía, España</div>
+				<div><span class="mono">Web</span><a href="https://fbmiliani.com">fbmiliani.com</a></div>
+				<div><span class="mono">LinkedIn</span><a href="https://www.linkedin.com/in/fabian-alberto-miliani-70440a3a" target="_blank" rel="noopener"><i class="ph ph-linkedin-logo"></i>Perfil</a></div>
+				<div><span class="mono">GitHub</span><a href="https://github.com/fabmil22" target="_blank" rel="noopener"><i class="ph ph-github-logo"></i>fabmil22</a></div>
+			</div>
+		</div>
+	</section>
 
-									<div
-										class="bg-white rounded-xl shadow-md p-6 mb-8">
-										<!-- Reemplaza la sección del iframe por esto -->
-										<div class="bg-white rounded-xl shadow-md p-6 mb-8 text-center">
-											<div class="py-8">
-												<h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Mi Agente IA</h2>
+	<footer>
+		<div class="wrap">
+			<span>Fabián Alberto Miliani, Desarrollador Senior Frontend &amp; IA Aplicada</span>
+			<span>&copy; 2026 Todos los derechos reservados.</span>
+		</div>
+	</footer>
 
+	<script>
+		// Menú móvil
+		const menuBtn = document.querySelector('.menu-btn');
+		const navLinks = document.getElementById('nav-links');
+		menuBtn.addEventListener('click', () => {
+			const open = navLinks.classList.toggle('open');
+			menuBtn.setAttribute('aria-expanded', open);
+			menuBtn.innerHTML = open ? '<i class="ph ph-x"></i>' : '<i class="ph ph-list"></i>';
+		});
+		navLinks.addEventListener('click', (e) => {
+			if (e.target.tagName === 'A' && navLinks.classList.contains('open')) menuBtn.click();
+		});
 
-												Interactúa con mi asistente virtual desarrollado con Gradio y alojado en Hugging Face Spaces
-												<p class="text-gray-600 mb-6">Debido a restricciones de seguridad, mi agente no puede mostrarse directamente en esta página. Haz clic en el botón para interactuar con él.</p>
-												<a href="https://huggingface.co/spaces/fabmil22/my_perfil" target="_blank" class="gradient-bg text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition inline-block">
-
-													<i class="fas fa-robot mr-2"></i>Interactuar con mi Agente IA
-												</a>
-											</div>
-										</div>
-
-									</div>
-
-
-								</div>
-							</section>
-
-							<!-- Contact Section -->
-							<section id="contact" class="py-16 bg-white">
-								<div class="container mx-auto px-4">
-									<h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Contacto</h2>
-									<div
-										class="grid grid-cols-1 md:grid-cols-2 gap-8">
-										<!-- <div class="bg-gray-50 rounded-xl shadow-md p-8">
-																																																																																																																																																																																					<h3 class="text-xl font-bold text-gray-800 mb-4">Envíame un mensaje</h3>
-																																																																																																																																																																																					<form>
-																																																																																																																																																																																						<div class="mb-4">
-																																																																																																																																																																																							<label for="name" class="block text-gray-700 mb-2">Nombre</label>
-																																																																																																																																																																																							<input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-																																																																																																																																																																																						</div>
-																																																																																																																																																																																						<div class="mb-4">
-																																																																																																																																																																																							<label for="email" class="block text-gray-700 mb-2">Email</label>
-																																																																																																																																																																																							<input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-																																																																																																																																																																																						</div>
-																																																																																																																																																																																						<div class="mb-4">
-																																																																																																																																																																																							<label for="message" class="block text-gray-700 mb-2">Mensaje</label>
-																																																																																																																																																																																							<textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-																																																																																																																																																																																						</div>
-																																																																																																																																																																																						<button type="submit" class="gradient-bg text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition w-full">Enviar Mensaje</button>
-																																																																																																																																																																																					</form>
-																																																																																																																																																																																				</div> -->
-										<div class="bg-gray-50 rounded-xl shadow-md ">
-											<h3 class="text-xl font-bold text-gray-800 mb-4">Información de contacto</h3>
-											<div class="space-y-4">
-												<div class="flex items-start">
-													<div class="text-blue-600 text-xl mr-4">
-														<i class="fas fa-envelope"></i>
-													</div>
-													<div>
-														<h4 class="font-bold text-gray-700">Email</h4>
-														<p class="text-gray-600">fabianfabian22@hotmail.com</p>
-													</div>
-												</div>
-												<div class="flex items-start">
-													<div class="text-blue-600 text-xl mr-4">
-														<i class="fas fa-map-marker-alt"></i>
-													</div>
-													<div>
-														<h4 class="font-bold text-gray-700">Ubicación</h4>
-														<p class="text-gray-600">Gines, Andalucía, España</p>
-													</div>
-												</div>
-												<div class="flex items-start">
-													<div class="text-blue-600 text-xl mr-4">
-														<i class="fas fa-globe"></i>
-													</div>
-													<div>
-														<h4 class="font-bold text-gray-700">Sitio Web</h4>
-														<p class="text-gray-600">
-															<a href="https://fbmiliani.com" class="text-blue-600 hover:underline">fbmiliani.com</a>
-														</p>
-													</div>
-												</div>
-											</div>
-											<div class="mt-8">
-												<h4 class="font-bold text-gray-700 mb-4">Redes sociales</h4>
-												<div class="flex space-x-4">
-													<a href="https://www.linkedin.com/in/fabian-alberto-miliani-70440a3a" class="text-blue-600 hover:text-blue-800 text-2xl" target="_blank">
-														<i class="fab fa-linkedin"></i>
-													</a>
-													<a href="#" class="text-blue-600 hover:text-blue-800 text-2xl">
-														<i class="fab fa-github"></i>
-													</a>
-													<a href="#" class="text-blue-600 hover:text-blue-800 text-2xl">
-														<i class="fab fa-twitter"></i>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</section>
-
-							<!-- Footer -->
-							<footer class="gradient-bg text-white py-8">
-								<div class="container mx-auto px-4">
-									<div class="flex flex-col md:flex-row justify-between items-center">
-										<div class="mb-4 md:mb-0">
-											<h3 class="text-xl font-bold">Fabián Alberto Miliani</h3>
-											<p class="text-gray-200">Desarrollador Senior Frontend &amp; IA Aplicada</p>
-										</div>
-										<div>
-											<p class="text-gray-200">&copy; 2026 Fabián Alberto Miliani. Todos los derechos reservados.</p>
-										</div>
-									</div>
-								</div>
-							</footer>
-
-							<script>
-								// Script para navegación móvil
-								document.querySelector('button').addEventListener('click', function () {
-									const nav = document.querySelector('.md\\:flex');
-									nav.classList.toggle('hidden');
-									nav.classList.toggle('flex');
-									nav.classList.toggle('flex-col');
-									nav.classList.toggle('absolute');
-									nav.classList.toggle('top-16');
-									nav.classList.toggle('right-0');
-									nav.classList.toggle('bg-blue-700');
-									nav.classList.toggle('p-4');
-									nav.classList.toggle('rounded-lg');
-									nav.classList.toggle('shadow-lg');
-									nav.classList.toggle('z-50');
-								});
-							</script>
-						</body>
-					</html>
+		// Aparición al entrar en pantalla
+		const items = document.querySelectorAll('.reveal');
+		if ('IntersectionObserver' in window) {
+			const io = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('in');
+						io.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+			items.forEach((el) => io.observe(el));
+		} else {
+			items.forEach((el) => el.classList.add('in'));
+		}
+	</script>
+</body>
+</html>
